@@ -24,12 +24,12 @@
                 </div>
                 <nav id="navbar-wrapper">   
                     <ul>
-                        <li><a href="#">Review & Komentar</a></li>
+                        <li><a href="<?php echo site_url().'/UserController/Produk';?>">Review & Komentar</a></li>
                         <li><a href="#">Teruji di Rumah</a></li>
                         <li><a href="#">Terbaik</a></li>
                         <li><a href="#">Tanya Jawab</a></li>
                         <li><a href="#">Bantuan</a></li>
-                        <li><a href="#">Masuk</a></li>
+                        <li><a href="<?php echo site_url().'/UserController/Login';?>">Masuk</a></li>
                     </ul>
                     <a href="<?php echo site_url().'/UserController/Register';?>" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
