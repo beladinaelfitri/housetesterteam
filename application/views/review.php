@@ -56,7 +56,7 @@
                     <div class="row mb-4">
                         <div class="col-4">
                             <div class="rev-img">
-                                <img src="assets/img/products/newpotabee.jpg" alt="Potabee Potato Chips Rasa Ayam Bakar">
+                                <img src="<?php echo base_url().'assets/img/products/newpotabee.jpg'?>" alt="Potabee Potato Chips Rasa Ayam Bakar">
                             </div>
                         </div>
                         <div class="col-8">
