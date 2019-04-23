@@ -43,7 +43,7 @@
                             <h2 class="head-font">Tentang Saya</h2>
                         </div>
                         <div class="col-3 tr">
-                            <p class="mt-3 body-font text-14">Anggota Sejak: <!-- PHP --></p>
+                            <p class="mt-3 body-font text-14">Anggota Sejak: <?= $regis_time ?><!-- PHP --></p>
                         </div>
                     </div>
                     <div class="row">
@@ -69,12 +69,12 @@
                                 </div>
                                 <div class="col-6">
                                     <ul class="pp-info paragraph-font list-unstyled pl-0 mb-0">
-                                        <li>Kang Juned</li>
-                                        <li>Pria</li>
-                                        <li>Januari, 1999</li>
-                                        <li>082297000533</li>
-                                        <li>kangjuned21@gmail.com</li>
-                                        <li>BOGOR, JB</li>
+                                        <li><?=  $firstname;?></li>
+                                        <li><?=  $jk;?></li>
+                                        <li><?=  $bulan,', ', $tahun;?></li>
+                                        <li><?=  $hp;?></li>
+                                        <li><?=  $email;?></li>
+                                        <li><?=  $kab,', ', $prov;?></li>
                                         <li>Indonesia</li>
                                     </ul>
                                 </div>
@@ -323,7 +323,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="firstname" name="firstname" required>
+                                                        <input type="text" id="firstname" name="firstname" required value="<?=  $firstname;?>">
                                                         <label for="firstname">Nama depan</label>
                                                     </div>
                                                     <div class="input-error">
@@ -336,7 +336,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="lastname" name="lastname" required value="<?=  $lastname;?>">
                                                         <label for="lastname">Nama Keluarga</label>
                                                     </div>
                                                     <div class="input-error">
@@ -349,8 +349,8 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" readonly>
-                                                        <label for="lastname">Jenis Kelamin</label>
+                                                        <input type="text" id="jk" name="jk" readonly value="<?=  $jk;?>">
+                                                        <label for="jk" >Jenis Kelamin</label>
                                                     </div>
                                                     <div class="input-error">
                                                         <span>
@@ -362,7 +362,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required readonly>
+                                                        <input type="text" id="bulan" name="bulan" required readonly value="<?=  $bulan,', ', $tahun;?>">
                                                         <label for="lastname">Bulan & tahun lahir</label>
                                                     </div>
                                                     <div class="input-error">
@@ -375,7 +375,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="email" name="email" required value="<?=  $email;?>">
                                                         <label for="lastname">Alamat email</label>
                                                     </div>
                                                     <div class="input-error">
@@ -388,7 +388,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="numphone" name="numphone" required value="<?=  $hp;?>">
                                                         <label for="lastname">Telepon *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -401,7 +401,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <textarea id="lastname" name="lastname" required></textarea>
+                                                        <textarea id="address" name="address" required></textarea>
                                                         <label for="lastname">Alamat *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -414,7 +414,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="address2" name="address2" required>
                                                         <label for="lastname">Alamat baris ke-2 *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -427,7 +427,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="address3" name="address3" required>
                                                         <label for="lastname">Kelurahan *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -440,7 +440,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="address4" name="address4" required>
                                                         <label for="lastname">Kecamatan *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -453,7 +453,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="address5" name="address" required>
                                                         <label for="lastname">Kabupaten *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -466,7 +466,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="select-wrapper overflow-hidden col-12 p-0">
-                                                        <select>
+                                                        <select name="prov">
                                                             <option value="" selected>Provinsi *</option>
                                                             <option value="AC">Aceh</option>
                                                             <option value="BA">Bali</option>
@@ -514,7 +514,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required>
+                                                        <input type="text" id="address6" name="address6" required>
                                                         <label for="lastname">Kode pos *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -528,26 +528,7 @@
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="select-wrapper overflow-hidden col-12 p-0">
                                                         <select disabled="true">
-                                                            <option value="">Negara *</option>
                                                             <option value="ID" selected="selected">Indonesia</option>
-                                                            <option value="SG">Singapore</option>
-                                                            <option value="MY">Malaysia</option>
-                                                            <option value="USA">USA</option>
-                                                            <option value="AUS">Australia</option>
-                                                            <option value="CAN">Canada</option>
-                                                            <option value="IND">India</option>
-                                                            <option value="RSA">South Africa</option>
-                                                            <option value="UK">UK</option>
-                                                            <option value="PH">Philippines</option>
-                                                            <option value="BR">Brazil</option>
-                                                            <option value="VN">Vietnam</option>
-                                                            <option value="FR">France</option>
-                                                            <option value="TH">Thailand</option>
-                                                            <option value="NZ">New Zealand</option>
-                                                            <option value="DE">Germany</option>
-                                                            <option value="HK">Hong Kong</option>
-                                                            <option value="TW">Taiwan</option>
-                                                            <option value="BE">Belgium</option>
                                                         </select>
                                                     </div>
                                                     <a href="#" class="body-font text-decoration-none txt-black">Ubah negara</a>

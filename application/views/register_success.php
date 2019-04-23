@@ -39,7 +39,7 @@
             <div class="container-fluid">
                 <div class="section-container signup-section">
                     <div class="col-12 section-hd">
-                        <h2>Hai <?php echo $firstname; ?> <!-- Name -->, ayo lengkapi profil Home Tester Club kamu</h2>
+                        <h2>Hai <?=  $this->session->userdata('firstname');?> <!-- Name -->, ayo lengkapi profil Home Tester Club kamu</h2>
                         <p class="body-font">Untuk bisa memberikan info tentang uji coba produk yang sesuai dengan kamu, kami butuh sedikit informasi rincian tentang kamu.</p>
                         <ul class="nav tabs" id="myTab" role="tablist">
                             <li class="nav-item"><a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Tentang Kamu</a></li>
@@ -48,20 +48,21 @@
                             <li class="nav-item"><a class="nav-link" id="socials-tab" data-toggle="tab" href="#socials" role="tab" aria-controls="socials" aria-selected="false">Koneksi Sosial Kamu</a></li>
                             <li class="nav-item"><a class="nav-link" id="last-tab" data-toggle="tab" href="#last" role="tab" aria-controls="last" aria-selected="false">Satu Hal Terakhir</a></li>
                         </ul>
+                        
                         <div class="col-10 tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="form-join-wrapper">
-                                    <form action="<?php echo site_url().'/UserController/RegisterDelivery';?>\
-                                        " method="POST">
+                                    <form action="<?php echo site_url().'/UserController/RegisterProfile';?>" method="POST">
                                         <div class="row">
                                             <div class="col-12 input-outer">
                                                 <div class="input-wrapper">
-                                                    <input type="text" id="firstname" name="firstname" value="<?php echo $firstname; ?>">
+                                                    <input type="text" id="firstname" name="firstname" value="<?=  $this->session->userdata('firstname');?>" >
                                                     <label for="firstname">Nama depan</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('firstname') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -71,22 +72,24 @@
                                                     <label for="lastname">Nama Keluarga</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('lastname') ?>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 input-outer">
                                                 <div class="select-wrapper">
-                                                    <select name="jk">
+                                                    <select name="jk" value="<?php echo $jk; ?>">
                                                         <option selected>Jenis Kelamin</option>
-                                                        <option value="m">Laki - laki</option>
-                                                        <option value="f">Perempuan</option>
+                                                        <option value="Laki - laki">Laki - laki</option>
+                                                        <option value="Perempuan">Perempuan</option>
                                                     </select>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('jk') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -97,47 +100,58 @@
                                                 <div class="select-wrapper">
                                                     <select name="bulan">
                                                         <option selected>Bulan</option>
-                                                        <option value="1">Januari</option>
-                                                        <option value="2">Februari</option>
-                                                        <option value="3">Maret</option>
-                                                        <option value="4">April</option>
-                                                        <option value="5">Mei</option>
-                                                        <option value="6">Juni</option>
-                                                        <option value="7">Juli</option>
-                                                        <option value="8">Agustus</option>
-                                                        <option value="9">September</option>
-                                                        <option value="10">Oktober</option>
-                                                        <option value="11">November</option>
-                                                        <option value="12">Desember</option>
+                                                        <option value="Januari">Januari</option>
+                                                        <option value="Februari">Februari</option>
+                                                        <option value="Maret">Maret</option>
+                                                        <option value="April">April</option>
+                                                        <option value="Mei">Mei</option>
+                                                        <option value="Juni">Juni</option>
+                                                        <option value="Juli">Juli</option>
+                                                        <option value="Agustus">Agustus</option>
+                                                        <option value="September">September</option>
+                                                        <option value="Oktober">Oktober</option>
+                                                        <option value="November">November</option>
+                                                        <option value="Desember">Desember</option>
                                                     </select>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('bulan') ?>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-6 input-outer">
                                                 <div class="select-wrapper">
-                                                    <select>
+                                                    <select name="tahun">
                                                         <option selected>Tahun</option>
                                                         <!-- PHP LOOP -->
+                                                        <?php
+                                                            $firstYear = (int)date('Y') - 84;
+                                                            $lastYear = $firstYear + 67;
+                                                            for($i=$firstYear;$i<=$lastYear;$i++)
+                                                            {
+                                                                echo '<option value='.$i.'>'.$i.'</option>';
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('tahun') ?>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 input-outer">
                                                 <div class="input-wrapper">
-                                                    <input type="text" id="email" name="email" value="<?php echo $email; ?>">
+                                                    <input type="text" id="email" name="email" value="<?=  $this->session->userdata('email');?>">
                                                     <label for="email">Alamat email</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('email') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -150,8 +164,9 @@
                                                     <label for="password">Kata sandi</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('password') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -161,8 +176,9 @@
                                                     <label for="repassword">Konfirmasi kata sandi</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('repassword') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -175,8 +191,9 @@
                                                     <label for="comms1">Saya ingin menerima informasi tentang uji di rumah berbagai produk, kompetisi dan komunikasi terkait dari Home Tester Club</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('comms') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -201,13 +218,14 @@
                                                     <label for="pp">Silakan setujui syarat dan ketentuan untuk melanjutkan</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('pp') ?>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 input-outer tr">
-                                                <button class="btnApply btn-white" type="submit">Kirimkan</button>
+                                                <button class="btnApply btn-white" type="submit" >Kirimkan</button>
                                             </div>
                                         </div>
                                     </form>
@@ -216,7 +234,7 @@
                             <div class="tab-pane fade" id="delivery" role="tabpanel" aria-labelledby="delivery-tab">
                                 <div class="form-header">Kami membutuhkan alamat kamu agar Kami dapat mengirimkan produk gratis ke rumah kamu. Lengkapi kolom di bawah ini dan pastikan untuk memberikan data terkini dengan selalu memperbaharui data kamu.</div>
                                 <div class="form-join-wrapper">
-                                    <form action="/" method="POST">
+                                    <form action="<?php echo site_url().'/UserController/RegisterDelivery';?>" method="POST">
                                         <div class="row">
                                             <div class="col-12 input-outer">
                                                 <div class="input-wrapper">
@@ -224,8 +242,9 @@
                                                     <label for="phonenum">Telepon *</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('phonenum') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -235,8 +254,9 @@
                                                     <label for="address">Alamat *</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('address') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -246,8 +266,9 @@
                                                     <label for="address2">Alamat baris ke-2 *</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('address2') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -257,8 +278,9 @@
                                                     <label for="address3">Kelurahan *</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('address3') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -268,8 +290,9 @@
                                                     <label for="address4">Kecamatan *</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('address4') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -279,14 +302,15 @@
                                                     <label for="address5">Kabupaten / Kota *</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('address5') ?>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 input-outer">
                                                 <div class="select-wrapper">
-                                                    <select>
+                                                    <select name="prov">
                                                         <option value="" selected>Provinsi *</option>
                                                         <option value="AC">Aceh</option>
                                                         <option value="BA">Bali</option>
@@ -325,8 +349,9 @@
                                                     </select>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('prov') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -336,8 +361,9 @@
                                                     <label for="address6">Kode pos *</label>
                                                 </div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('address6') ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -352,17 +378,18 @@
                             <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
                                 <div class="form-header">Kami membutuhkan lebih banyak info tentang kamu supaya kamu bisa merasakan manfaat maksimal dari Home Tester Club.</div>
                                 <div class="form-join-wrapper">
-                                    <form action="/" method="POST">
+                                    <form action="<?php echo site_url().'/UserController/RegisterAbout';?>" method="POST">
                                         <div class="row">
                                             <div class="col-12 input-outer">
                                                 <div class="input-header">Berapa jumlah orang yang tinggal di rumah anda?</div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('anak') ?>
                                                     </span>
                                                 </div>
                                                 <div class="select-wrapper np col-6">
-                                                    <select>
+                                                    <select name="anak">
                                                         <option value="" selected>Sebutkan</option>
                                                         <option value="A">Anda Sendiri</option>
                                                         <option value="B">2 Orang</option>
@@ -377,8 +404,9 @@
                                                 <div class="input-header">Apakah anda memiliki anak yang berusia dibawah 18 tahun?</div>
                                                 <div class="input-desc body-font">Kamu dapat memilih maksimal 2 jawaban</div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('child') ?>
                                                     </span>
                                                 </div>
                                                 <div class="input-wrapper">
@@ -395,39 +423,15 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 input-outer">
-                                                <div class="input-header">Pada tahun berapa anak anda lahir?</div>
-                                                <div class="input-desc body-font">Kamu dapat memilih maksimal 8 jawaban</div>
-                                                <div class="input-error">
-                                                    <span>
-                                                        <!-- Error -->
-                                                    </span>
-                                                </div>
-                                                <div class="input-wrapper np fl col-6">
-                                                    <input type="checkbox" id="child-date1" name="child-date">
-                                                    <label for="child-date1">2019</label>
-                                                </div>
-                                                <div class="input-wrapper np fl col-6">
-                                                    <input type="checkbox" id="child-date2" name="child-date">
-                                                    <label for="child-date2">2018</label>
-                                                </div>
-                                                <div class="input-wrapper np fl col-6">
-                                                    <input type="checkbox" id="child-date3" name="child-date">
-                                                    <label for="child-date3">2017</label>
-                                                </div>
-                                                <div class="input-wrapper np fl col-6">
-                                                    <input type="checkbox" id="child-date4" name="child-date">
-                                                    <label for="child-date4">2016</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 input-outer">
                                                 <div class="input-header">Manakah yang paling tepat menggambarkan penghasilan bulanan anda ?</div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('gaji') ?>
                                                     </span>
                                                 </div>
                                                 <div class="select-wrapper np col-6">
-                                                    <select>
+                                                    <select name="gaji">
                                                         <option value="" selected>Sebutkan</option>
                                                         <option value="A">Dibawah Rp. 3.000.000</option>
                                                         <option value="B">Rp. 3.000.000 - Rp 10.000.000</option>
@@ -442,12 +446,13 @@
                                             <div class="col-12 input-outer">
                                                 <div class="input-header">Dari seluruh penghasilan Anda dalam sebulan, berapakah persentase untuk berbelanja kebutuhan rumah tangga?</div>
                                                 <div class="input-error">
-                                                    <span>
+                                                    <span class="form-text text-danger">
                                                         <!-- Error -->
+                                                        <?= form_error('outcome') ?>
                                                     </span>
                                                 </div>
                                                 <div class="select-wrapper np col-6">
-                                                    <select>
+                                                    <select name="outcome">
                                                         <option value="" selected>Sebutkan</option>
                                                         <option value="A">0-25%</option>
                                                         <option value="B">25%-49%</option>
