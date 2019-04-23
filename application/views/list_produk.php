@@ -218,7 +218,7 @@
                             <div class="col-4 mb-4">
                                 <div class="revlist-item">
                                     <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('assets/img/products/calpicosoda.jpg')"></div></a>
+                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/calpicosoda.jpg'?>')"></div></a>
                                     </div>
                                     <div class='revlist-head'>
                                         <a hre="#">
