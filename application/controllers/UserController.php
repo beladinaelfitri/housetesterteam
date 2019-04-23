@@ -9,10 +9,6 @@ class UserController extends CI_Controller {
     }
 
     public function index(){
-        // if ($this->session->userdata('login')==1) {
-        // nanti redirect ke homepage
-        //     redirect('BelajarController/index');
-        // }
         $this->load->view('register');
     }
 
@@ -32,7 +28,7 @@ class UserController extends CI_Controller {
                 $data_session = array(
                     'email' => $data_member['email'],
                     'firstname' => $data_member['firstname'],
-                    'status' => 'login'
+                    'status' => 'lregis'
                 );
                 $this->session->set_userdata($data_session);
                 $this->load->view('register_success', $data_member);
@@ -69,21 +65,14 @@ class UserController extends CI_Controller {
         if($this->form_validation->run() != false) {
             if($data_member['pw'] == $this->input->post('repassword')){
                 if($this->UserModel->registerUser($data_member)) {
-                    // Buat Flashdata dan arahkan kembali ke Landing
                     $this->session->set_flashdata('SuccessReg', 'Berhasil');
                     redirect('UserController/RegisterSuccess');
                 } else {
-                    // Buat Flashdata dan arahkan kembali ke Landing/Register
-                    //$this->session->set_flashdata('FailReg', 'fail');
-                    //redirect('Landing/Register');
-                    $this->load->view('login', $data_member);
+                    $this->session->set_flashdata('FailReg', 'fail');
+                    $this->load->view('register_success', $data_member);
                 }
             } else {
-                // Buat flashdata
-                //$this->session->set_flashdata('FailReg', 'fail');
-                // Arahkan kembali ke Landing/Register
-                //redirect('Landing/Register');
-                $this->load->view('login', $data_member);
+                $this->load->view('register_success', $data_member);
             }
         } else {
             $this->load->view('register_success', $data_member);
@@ -113,14 +102,11 @@ class UserController extends CI_Controller {
 
         if($this->form_validation->run() != false) {
             if($this->UserModel->registerDeliv($data_member)) {
-                    // Buat Flashdata dan arahkan kembali ke Landing
                     $this->session->set_flashdata('SuccessReg', 'Berhasil');
                     redirect('UserController/RegisterSuccess');
                 } else {
-                    // Buat Flashdata dan arahkan kembali ke Landing/Register
-                    //$this->session->set_flashdata('FailReg', 'fail');
-                    //redirect('Landing/Register');
-                    $this->load->view('login', $data_member);
+                    $this->session->set_flashdata('FailReg', 'fail');
+                    $this->load->view('register_success', $data_member);
                 }
         } else {
             $this->load->view('register_success', $data_member);
@@ -131,25 +117,24 @@ class UserController extends CI_Controller {
         $this->form_validation->set_rules('anak','Telepon','required');
         $this->form_validation->set_rules('child','Alamat','required');
         $this->form_validation->set_rules('gaji','Kelurahan','required');
+        $this->form_validation->set_rules('child-date','Alamat','required');
         $this->form_validation->set_rules('outcome','Kecamatan','required');
 
         $data_member = array (
             'anak' => $this->input->post('anak'),
             'child' => $this->input->post('child'),
             'gaji' => $this->input->post('gaji'),
+            'child-date' => $this->input->post('child-date'),
             'outcome' => $this->input->post('outcome')
         );
 
         if($this->form_validation->run() != false) {
             if($this->UserModel->registerAbout($data_member)) {
-                // Buat Flashdata dan arahkan kembali ke Landing
                 $this->session->set_flashdata('SuccessReg', 'Berhasil');
                 redirect('UserController/Profile');
             } else {
-                // Buat Flashdata dan arahkan kembali ke Landing/Register
-                //$this->session->set_flashdata('FailReg', 'fail');
-                //redirect('Landing/Register');
-                $this->load->view('login', $data_member);
+                $this->session->set_flashdata('FailReg', 'fail');
+                $this->load->view('register_success', $data_member);
             }
         } else {
             $this->load->view('register_success', $data_member);
@@ -160,13 +145,7 @@ class UserController extends CI_Controller {
         $this->load->view('register_success');
     }
 
-    public function Profile(){
-        $user = $this->session->userdata('email');
-        $data_user = $this->UserModel->searchUser($user);
-        $this->load->view('profile', $data_user);
-    }
-
-    public function editProfile(){
+    public function editRincian(){
         $this->form_validation->set_rules('firstname','Nama Depan','required');
         $this->form_validation->set_rules('lastname','Nama keluarga','required');
         $this->form_validation->set_rules('email','Email','required');
@@ -195,24 +174,32 @@ class UserController extends CI_Controller {
         );
 
         if($this->form_validation->run() != false){
-            if ($this->UserModel->cekUser($data_member['email'])) {
-                $this->session->set_flashdata('FailReg', 'fail');
+            if ($this->UserModel->cekUser($data_member['email']) && $data_member['email']!=$this->session->userdata('email')) {
+                echo "<script>alert('Email sudah ada!');</script>";
+                //$this->session->set_flashdata('FailReg', 'fail');
             } else {
                 if($this->UserModel->editProfile($data_member)) {
-                    // Buat Flashdata dan arahkan kembali ke Landing
-                    $this->session->set_flashdata('SuccessReg', 'Berhasil');
-                    $this->load->view('profile');
+                    echo "<script>alert('Berhasil Merubah!');</script>";
+                    //$this->session->set_flashdata('SuccessReg', 'Berhasil');
+                    redirect('UserController/Profile');
                 } else {
-                    // Buat Flashdata dan arahkan kembali ke Landing/Register
+                    echo "<script>alert('Data gagal dirubah');</script>";
                     //$this->session->set_flashdata('FailReg', 'fail');
-                    //redirect('Landing/Register');
-                    $this->load->view('login', $data_member);
+                    redirect('UserController/Profile');
                 }
             }        
         }else{
-            $this->load->view('profile');
+            echo "<script>alert('isi dylubah');</script>";
+            redirect('UserController/Profile');
         }
 
+    }
+
+    public function Profile(){
+        $user = $this->session->userdata('email');
+        $data_user = $this->UserModel->searchUser($user);
+        $this->load->view('profile', $data_user);
+        
     }
 
 
@@ -246,14 +233,37 @@ class UserController extends CI_Controller {
 //         }
 //     }
 
-//     public function Logout() {
-//         $cookie = $this->input->cookie('logged');
-//         if(isset($cookie)) {
-//             delete_cookie('logged');
-//             redirect('Landing');
-//         } else {
-//             session_destroy();
-//             redirect('Landing');
-//         }
-//     }
+    public function Login(){
+        $this->form_validation->set_rules('email','Email','required');
+        $this->form_validation->set_rules('password','Password','required');
+        $this->form_validation->set_rules('remember','remember me','required');
+
+        $data_member = array (
+            'password' => $this->input->post('password'),
+            'email' => $this->input->post('email'),
+        );
+
+        if($this->form_validation->run() != false){
+            $login = $this->UserModel->cekLogin($data_member);
+            if ($login) {
+                $data_session = array(
+                    'email' => $data_member['email'],
+                    'status' => 'login'
+                );
+                $this->session->set_userdata($data_session);
+                redirect('UserController/Profile');
+            } else {
+                echo "<script>alert('Email dan password tidak valid!');</script>";
+                $this->load->view('login');
+            }        
+        }else{
+            $this->load->view('login');
+        }
+
+    }
+
+    public function Logout(){
+        $this->session->sess_destroy();
+        redirect(base_url('login'));
+    }
 }

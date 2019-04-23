@@ -9,6 +9,7 @@
         <title>Home Tester Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon shortcut" href="https://d2vtntcxpdw15n.cloudfront.net/img3/favicon.ico" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>"> 
@@ -177,19 +178,6 @@
                                         <div class='col-12 text-center mt-4'>
                                             <button class='btnApply btn-white' type='submit'>Lanjut</button>
                                         </div>
-                                        <div class="reviewlist row mr-0 pb-3">
-                                            <div class="col-2 pl-0">
-                                                <div class="reviewimg-wrap" style="background-image: url('assets/img/products/newpotabee.jpg')"></div>
-                                            </div>
-                                            <div class="col-8">
-                                                <p class="text-18 mt-5">Potabee Potato Chips Rasa Ayam Bakar</p>
-                                                <p class="paragraph-font text-size-18">Rasa ayam bakarnya kerasa banget sih, kalian harus coba. apalagi ditambah ini ada bumbu-bumbu pedasnya gitu.</p>
-                                            </div>
-                                            <div class="col-2 text-right pr-0">
-                                                <p class="body-font text-size-14 mt-5">19 Apr 19</p>
-                                                <a href="#" class='txt-black'><i class="far fa-trash-alt fa-2x mt-3"></i></a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
@@ -205,13 +193,13 @@
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
                                                         <select>
-                                                            <option value="" selected>Sebutkan</option>
-                                                            <option value="A">Anda Sendiri</option>
-                                                            <option value="B">2 Orang</option>
-                                                            <option value="C">3 Orang</option>
-                                                            <option value="D">4 Orang</option>
-                                                            <option value="E">5 Orang</option>
-                                                            <option value="F">6 Atau Lebih</option>
+                                                            <option <?php if ($jum_orang == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
+                                                            <option <?php if ($jum_orang == 'A' ) echo 'selected' ; ?> value="A">Anda Sendiri</option>
+                                                            <option <?php if ($jum_orang == 'B' ) echo 'selected' ; ?> value="B">2 Orang</option>
+                                                            <option <?php if ($jum_orang == 'C' ) echo 'selected' ; ?> value="C">3 Orang</option>
+                                                            <option <?php if ($jum_orang == 'D' ) echo 'selected' ; ?> value="D">4 Orang</option>
+                                                            <option <?php if ($jum_orang == 'E' ) echo 'selected' ; ?> value="E">5 Orang</option>
+                                                            <option <?php if ($jum_orang == 'F' ) echo 'selected' ; ?> value="F">6 Atau Lebih</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -226,15 +214,15 @@
                                                         </span>
                                                     </div>
                                                     <div class="input-wrapper col-12 pl-0 pr-0 mt-5">
-                                                        <input type="checkbox" id="child1" name="child">
+                                                        <input type="checkbox" id="child1" name="child" <?php if ($anak == 'p' ) echo 'checked' ; ?> value="p">
                                                         <label for="child1">Perempuan</label>
                                                     </div>
                                                     <div class="input-wrapper col-12 pl-0 pr-0 mt-5">
-                                                        <input type="checkbox" id="child2" name="child">
+                                                        <input type="checkbox" id="child2" name="child" <?php if ($anak == 'l' ) echo 'checked' ; ?> value="l">
                                                         <label for="child2">Laki-laki</label>
                                                     </div>
                                                     <div class="input-wrapper col-12 pl-0 pr-0 mt-5">
-                                                        <input type="checkbox" id="child0" name="child">
+                                                        <input type="checkbox" id="child0" name="child" <?php if ($anak == 'n' ) echo 'checked' ; ?> value="n">
                                                         <label for="child0">Tidak/Belum memiliki anak</label>
                                                     </div>
                                                 </div>
@@ -250,19 +238,19 @@
                                                     </div>
                                                     <div class="row ml-0 mr-0 mt-4">
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date1" name="child-date">
+                                                            <input type="checkbox" id="child-date1" name="child-date" <?php if ($tahun_anak == '2019' ) echo 'checked' ; ?> value="2019">
                                                             <label for="child-date1">2019</label>
                                                         </div>
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date2" name="child-date">
+                                                            <input type="checkbox" id="child-date2" name="child-date" <?php if ($tahun_anak == '2018' ) echo 'checked' ; ?> value="2018">
                                                             <label for="child-date2">2018</label>
                                                         </div>
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date3" name="child-date">
+                                                            <input type="checkbox" id="child-date3" name="child-date" <?php if ($tahun_anak == '2017' ) echo 'checked' ; ?> value="2017">
                                                             <label for="child-date3">2017</label>
                                                         </div>
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date4" name="child-date">
+                                                            <input type="checkbox" id="child-date4" name="child-date" <?php if ($tahun_anak == '2016' ) echo 'checked' ; ?> value="2016">
                                                             <label for="child-date4">2016</label>
                                                         </div>
                                                     </div>
@@ -278,14 +266,14 @@
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
                                                         <select>
-                                                            <option value="" selected>Sebutkan</option>
-                                                            <option value="A">Dibawah Rp. 3.000.000</option>
-                                                            <option value="B">Rp. 3.000.000 - Rp 10.000.000</option>
-                                                            <option value="C">Rp. 10.000.000 - Rp. 15.000.000</option>
-                                                            <option value="D">Rp. 15.000.000 - Rp. 25.000.000</option>
-                                                            <option value="E">Rp. 25.000.000 - Rp. 35.000.000</option>
-                                                            <option value="F">Diatas  Rp. 35.000.000</option>
-                                                            <option value="G">Menolak</option>
+                                                            <option <?php if ($gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
+                                                            <option <?php if ($gaji == 'A' ) echo 'selected' ; ?> value="A">Dibawah Rp. 3.000.000</option>
+                                                            <option <?php if ($gaji == 'B' ) echo 'selected' ; ?> value="B">Rp. 3.000.000 - Rp 10.000.000</option>
+                                                            <option <?php if ($gaji == 'C' ) echo 'selected' ; ?> value="C">Rp. 10.000.000 - Rp. 15.000.000</option>
+                                                            <option <?php if ($gaji == 'D' ) echo 'selected' ; ?> value="D">Rp. 15.000.000 - Rp. 25.000.000</option>
+                                                            <option <?php if ($gaji == 'E' ) echo 'selected' ; ?> value="E">Rp. 25.000.000 - Rp. 35.000.000</option>
+                                                            <option <?php if ($gaji == 'F' ) echo 'selected' ; ?> value="F">Diatas  Rp. 35.000.000</option>
+                                                            <option <?php if ($gaji == 'G' ) echo 'selected' ; ?> value="G">Menolak</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -300,11 +288,11 @@
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
                                                         <select>
-                                                            <option value="" selected>Sebutkan</option>
-                                                            <option value="A">0-25%</option>
-                                                            <option value="B">25%-49%</option>
-                                                            <option value="C">50%-74%</option>
-                                                            <option value="D">Lebih dari 75%</option>
+                                                            <option <?php if ($gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
+                                                            <option <?php if ($gaji == 'A' ) echo 'selected' ; ?> value="A">0-25%</option>
+                                                            <option <?php if ($gaji == 'B' ) echo 'selected' ; ?> value="B">25%-49%</option>
+                                                            <option <?php if ($gaji == 'C' ) echo 'selected' ; ?> value="C">50%-74%</option>
+                                                            <option <?php if ($gaji == 'D' ) echo 'selected' ; ?> value="D">Lebih dari 75%</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -319,7 +307,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="form-wrapper">
-                                        <form action="/" method="POST">
+                                        <form action="<?php echo site_url().'/UserController/editRincian';?>" method="POST">
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
@@ -355,6 +343,7 @@
                                                     <div class="input-error">
                                                         <span>
                                                             <!-- Error -->
+                                                            <?= form_error('jk') ?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -401,7 +390,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <textarea id="address" name="address" required></textarea>
+                                                        <textarea id="address" name="address" required><?=  $alamat;?></textarea>
                                                         <label for="lastname">Alamat *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -414,7 +403,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address2" name="address2" required>
+                                                        <input type="text" id="address2" name="address2" required value="<?=  $alamat_dua;?>">
                                                         <label for="lastname">Alamat baris ke-2 *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -427,7 +416,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address3" name="address3" required>
+                                                        <input type="text" id="address3" name="address3" required value="<?=  $kel;?>">
                                                         <label for="lastname">Kelurahan *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -440,7 +429,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address4" name="address4" required>
+                                                        <input type="text" id="address4" name="address4" required value="<?=  $kec;?>">
                                                         <label for="lastname">Kecamatan *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -453,7 +442,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address5" name="address" required>
+                                                        <input type="text" id="address5" name="address" required value="<?=  $kab;?>">
                                                         <label for="lastname">Kabupaten *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -467,41 +456,41 @@
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="select-wrapper overflow-hidden col-12 p-0">
                                                         <select name="prov">
-                                                            <option value="" selected>Provinsi *</option>
-                                                            <option value="AC">Aceh</option>
-                                                            <option value="BA">Bali</option>
-                                                            <option value="BT">Banten</option>
-                                                            <option value="BE">Bengkulu</option>
-                                                            <option value="JK">DKI Jakarta</option>
-                                                            <option value="GO">Gorontalo</option>
-                                                            <option value="JA">Jambi</option>
-                                                            <option value="JB">Jawa Barat</option>
-                                                            <option value="JT">Jawa Tengah</option>
-                                                            <option value="JI">Jawa Timur</option>
-                                                            <option value="KB">Kalimantan Barat</option>
-                                                            <option value="KS">Kalimantan Selatan</option>
-                                                            <option value="KT">Kalimantan Tengah</option>
-                                                            <option value="KI">Kalimantan Timur</option>
-                                                            <option value="KU">Kalimantan Utara</option>
-                                                            <option value="BB">Kepulauan Bangka Belitung</option>
-                                                            <option value="KR">Kepulauan Riau</option>
-                                                            <option value="LA">Lampung</option>
-                                                            <option value="MA">Maluku</option>
-                                                            <option value="MU">Maluku Utara</option>
-                                                            <option value="NB">Nusa Tenggara Barat</option>
-                                                            <option value="NT">Nusa Tenggara Timur</option>
-                                                            <option value="PA">Papua</option>
-                                                            <option value="PB">Papua Barat</option>
-                                                            <option value="RI">Riau</option>
-                                                            <option value="SR">Sulawesi Barat</option>
-                                                            <option value="SN">Sulawesi Selatan</option>
-                                                            <option value="ST">Sulawesi Tengah</option>
-                                                            <option value="SG">Sulawesi Tenggara</option>
-                                                            <option value="SA">Sulawesi Utara</option>
-                                                            <option value="SB">Sumatera Barat</option>
-                                                            <option value="SS">Sumatera Selatan</option>
-                                                            <option value="SU">Sumatera Utara</option>
-                                                            <option value="YO">Yogyakarta</option>
+                                                            <option <?php if ($prov == '' ) echo 'selected' ; ?> value="">Provinsi *</option>
+                                                            <option <?php if ($prov == 'AC' ) echo 'selected' ; ?> value="AC">Aceh</option>
+                                                            <option <?php if ($prov == 'BA' ) echo 'selected' ; ?> value="BA">Bali</option>
+                                                            <option <?php if ($prov == 'BT' ) echo 'selected' ; ?> value="BT">Banten</option>
+                                                            <option <?php if ($prov == 'BE' ) echo 'selected' ; ?> value="BE">Bengkulu</option>
+                                                            <option <?php if ($prov == 'JK' ) echo 'selected' ; ?> value="JK">DKI Jakarta</option>
+                                                            <option <?php if ($prov == 'GO' ) echo 'selected' ; ?> value="GO">Gorontalo</option>
+                                                            <option <?php if ($prov == 'JA' ) echo 'selected' ; ?> value="JA">Jambi</option>
+                                                            <option <?php if ($prov == 'JB' ) echo 'selected' ; ?> value="JB">Jawa Barat</option>
+                                                            <option <?php if ($prov == 'JT' ) echo 'selected' ; ?> value="JT">Jawa Tengah</option>
+                                                            <option <?php if ($prov == 'JI' ) echo 'selected' ; ?> value="JI">Jawa Timur</option>
+                                                            <option <?php if ($prov == 'KB' ) echo 'selected' ; ?> value="KB">Kalimantan Barat</option>
+                                                            <option <?php if ($prov == 'KS' ) echo 'selected' ; ?> value="KS">Kalimantan Selatan</option>
+                                                            <option <?php if ($prov == 'KT' ) echo 'selected' ; ?> value="KT">Kalimantan Tengah</option>
+                                                            <option <?php if ($prov == 'KI' ) echo 'selected' ; ?> value="KI">Kalimantan Timur</option>
+                                                            <option <?php if ($prov == 'KU' ) echo 'selected' ; ?> value="KU">Kalimantan Utara</option>
+                                                            <option <?php if ($prov == 'BB' ) echo 'selected' ; ?> value="BB">Kepulauan Bangka Belitung</option>
+                                                            <option <?php if ($prov == 'KR' ) echo 'selected' ; ?> value="KR">Kepulauan Riau</option>
+                                                            <option <?php if ($prov == 'LA' ) echo 'selected' ; ?> value="LA">Lampung</option>
+                                                            <option <?php if ($prov == 'MA' ) echo 'selected' ; ?> value="MA">Maluku</option>
+                                                            <option <?php if ($prov == 'MU' ) echo 'selected' ; ?> value="MU">Maluku Utara</option>
+                                                            <option <?php if ($prov == 'NB' ) echo 'selected' ; ?> value="NB">Nusa Tenggara Barat</option>
+                                                            <option <?php if ($prov == 'NT' ) echo 'selected' ; ?> value="NT">Nusa Tenggara Timur</option>
+                                                            <option <?php if ($prov == 'PA' ) echo 'selected' ; ?> value="PA">Papua</option>
+                                                            <option <?php if ($prov == 'PB' ) echo 'selected' ; ?> value="PB">Papua Barat</option>
+                                                            <option <?php if ($prov == 'RI' ) echo 'selected' ; ?> value="RI">Riau</option>
+                                                            <option <?php if ($prov == 'SR' ) echo 'selected' ; ?> value="SR">Sulawesi Barat</option>
+                                                            <option <?php if ($prov == 'SN' ) echo 'selected' ; ?> value="SN">Sulawesi Selatan</option>
+                                                            <option <?php if ($prov == 'ST' ) echo 'selected' ; ?> value="ST">Sulawesi Tengah</option>
+                                                            <option <?php if ($prov == 'SG' ) echo 'selected' ; ?> value="SG">Sulawesi Tenggara</option>
+                                                            <option <?php if ($prov == 'SA' ) echo 'selected' ; ?> value="SA">Sulawesi Utara</option>
+                                                            <option <?php if ($prov == 'SB' ) echo 'selected' ; ?> value="SB">Sumatera Barat</option>
+                                                            <option <?php if ($prov == 'SS' ) echo 'selected' ; ?> value="SS">Sumatera Selatan</option>
+                                                            <option <?php if ($prov == 'SU' ) echo 'selected' ; ?> value="SU">Sumatera Utara</option>
+                                                            <option <?php if ($prov == 'YO' ) echo 'selected' ; ?> value="YO">Yogyakarta</option>
                                                         </select>
                                                     </div>
                                                     <div class="input-error">
@@ -514,7 +503,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address6" name="address6" required>
+                                                        <input type="text" id="address6" name="address6" required value="<?=  $kodepos;?>">
                                                         <label for="lastname">Kode pos *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -531,7 +520,7 @@
                                                             <option value="ID" selected="selected">Indonesia</option>
                                                         </select>
                                                     </div>
-                                                    <a href="#" class="body-font text-decoration-none txt-black">Ubah negara</a>
+                                                    <!-- <a href="#" class="body-font text-decoration-none txt-black">Ubah negara</a>-->
                                                     <div class="input-error">
                                                         <span>
                                                             <!-- Error -->

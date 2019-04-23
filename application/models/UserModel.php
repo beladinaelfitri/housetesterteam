@@ -45,6 +45,7 @@ class UserModel extends CI_Model {
         $this->db->set('jum_orang', $data['anak']);
         $this->db->set('anak', $data['child']);
         $this->db->set('gaji', $data['gaji']);
+        $this->db->set('tahun_anak', $data['child-date']);
         $this->db->set('belanja', $data['outcome']);
 
         $insert = $this->db->update('member');
@@ -63,6 +64,29 @@ class UserModel extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    public function cekLogin($user){
+        $this->db->where('email',$user['email']);
+        $this->db->where('password',$user['password']);
+        $res = $this->db->get('member');
+        if($res->num_rows() > 0){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    public function cekEmail($user){
+        $this->db->select('email')->from('member');
+        $this->db->where('email', $user);
+        return $this->db->get();
+    }
+
+    public function cekPw($user){
+        $this->db->select('password')->from('member');
+        $this->db->where('password', $user);
+        return $this->db->get();
     }
 
     public function searchUser($email)
@@ -95,6 +119,8 @@ class UserModel extends CI_Model {
             return FALSE;
         }
     }
+
+    
    
 
 //     public function Register() {

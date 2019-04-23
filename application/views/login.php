@@ -9,6 +9,7 @@
         <title>Home Tester Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon shortcut" href="https://d2vtntcxpdw15n.cloudfront.net/img3/favicon.ico" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>">
@@ -20,7 +21,7 @@
         <header id="header-wrapper">
             <div class="header-items container-fluid">
                 <div class="header-logo">
-                    <a href="#"><img src="assets/img/htc_logo2.png" alt="Header Logo"></a>
+                    <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
                 <nav id="navbar-wrapper">   
                     <ul>
@@ -51,7 +52,7 @@
                             </div>
                         </div>
                         <div class="col-8 form-join-wrapper">
-                            <form action="/" method="POST">
+                            <form action="<?php echo site_url().'/UserController/Login';?>" method="POST">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="input-wrapper">
@@ -59,21 +60,22 @@
                                             <label for="email">Alamat email</label>
                                         </div>
                                         <div class="input-error">
-                                            <span><!-- Error --></span>
+                                            <span><!-- Error --><?= form_error('email') ?></span>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    
+                                    <div class="col-12 margin-t10">
                                         <div class="input-wrapper">
                                             <input type="password" id="password" name="password">
                                             <label for="password">Kata sandi</label>
                                         </div>
                                         <div class="input-error">
-                                            <span><!-- Error --></span>
+                                            <span><!-- Error --><?= form_error('password') ?></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class='remember-wrapper'>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="remember">
                                             <label for="password">
                                                 <span>Ingat saya</span>
                                             </label>
@@ -97,12 +99,12 @@
             <div class="footer-items">
                 <div class="col-2 footer-logo">
                     <a href="#" target="_blank">
-                        <img src="assets/img/bg-logo2_negative.png" alt="Footer Logo">
+                        <img src="<?php echo base_url().'assets/img/bg-logo2_negative.png'?>" alt="Footer Logo">
                     </a>
                 </div>
                 <div class="col-4 footer-text">
                     © 2019 Buchanan Group. All Rights Reserved.
-                </div>
+                </div
                 <div class="col-6 footer-sitemap footer-text">
                     <ul>
                         <li><a href="">Ganti Negara</a></li>

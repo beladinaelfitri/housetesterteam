@@ -9,6 +9,7 @@
         <title>Home Tester Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon shortcut" href="https://d2vtntcxpdw15n.cloudfront.net/img3/favicon.ico" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>"> 
@@ -420,6 +421,31 @@
                                                 <div class="input-wrapper">
                                                     <input type="checkbox" id="child0" name="child">
                                                     <label for="child0">Tidak/Belum memiliki anak</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 input-outer">
+                                                <div class="input-header">Pada tahun berapa anak anda lahir?</div>
+                                                <div class="input-desc body-font">Kamu dapat memilih maksimal 8 jawaban</div>
+                                                <div class="input-error">
+                                                    <span>
+                                                        <!-- Error -->
+                                                    </span>
+                                                </div>
+                                                <div class="input-wrapper np fl col-6">
+                                                    <input type="checkbox" id="child-date1" name="child-date">
+                                                    <label for="child-date1">2019</label>
+                                                </div>
+                                                <div class="input-wrapper np fl col-6">
+                                                    <input type="checkbox" id="child-date2" name="child-date">
+                                                    <label for="child-date2">2018</label>
+                                                </div>
+                                                <div class="input-wrapper np fl col-6">
+                                                    <input type="checkbox" id="child-date3" name="child-date">
+                                                    <label for="child-date3">2017</label>
+                                                </div>
+                                                <div class="input-wrapper np fl col-6">
+                                                    <input type="checkbox" id="child-date4" name="child-date">
+                                                    <label for="child-date4">2016</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 input-outer">
