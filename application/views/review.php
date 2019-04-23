@@ -55,7 +55,7 @@
                 <div class="container-inner col-12 pt-5 pb-5 mb-5">
                     <div class="row mb-4">
                         <div class="col-4">
-                            <div class="rev-img" style="width: 300px; height: 300px">
+                            <div class="rev-img">
                                 <img src="<?php echo base_url().'assets/img/products/newpotabee.jpg'?>" alt="Potabee Potato Chips Rasa Ayam Bakar">
                             </div>
                         </div>
@@ -292,7 +292,7 @@
                                 <!-- GALERY LOOP START -->
                                 <div class="galeri-item col-4">
                                     <a href="#">
-                                        <div class="galeri-img" style="background-image:url('assets/img/review/1.jpeg')"></div>
+                                        <div class="galeri-img" style="background-image:url('<?php echo base_url().'assets/img/review/1.jpeg'?>')"></div>
                                         <div class="galeri-user body-font text-center text-size-18 txt-black mt-3">
                                             <p class="">Kang Juned</p>
                                         </div>
@@ -300,7 +300,7 @@
                                 </div>
                                 <div class="galeri-item col-4">
                                     <a href="#">
-                                        <div class="galeri-img" style="background-image:url('assets/img/review/2.jpeg')"></div>
+                                        <div class="galeri-img" style="background-image:url('<?php echo base_url().'assets/img/review/2.jpeg'?>')"></div>
                                         <div class="galeri-user body-font text-center text-size-18 txt-black mt-3">
                                             <p class="">Kang Juned</p>
                                         </div>
@@ -308,7 +308,7 @@
                                 </div>
                                 <div class="galeri-item col-4">
                                     <a href="#">
-                                        <div class="galeri-img" style="background-image:url('assets/img/review/3.jpeg')"></div>
+                                        <div class="galeri-img" style="background-image:url('<?php echo base_url().'assets/img/review/3.jpeg'?>')"></div>
                                         <div class="galeri-user body-font text-center text-size-18 txt-black mt-3">
                                             <p class="">Kang Juned</p>
                                         </div>
