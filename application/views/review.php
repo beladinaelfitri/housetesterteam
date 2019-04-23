@@ -556,7 +556,7 @@
             <div class="footer-items">
                 <div class="col-2 footer-logo">
                     <a href="#" target="_blank">
-                        <img src="assets/img/bg-logo2.png" alt="Footer Logo">
+                        <img src="<?php echo base_url().'assets/img/bg-logo2.png'?>" alt="Footer Logo">
                     </a>
                 </div>
                 <div class="col-4 footer-text">
