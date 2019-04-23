@@ -12,7 +12,6 @@
         <link rel="icon shortcut" href="https://d2vtntcxpdw15n.cloudfront.net/img3/favicon.ico" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>">
     </head>
     <body class='body-secondary'>
         <!--[if lt IE 7]>
@@ -21,7 +20,7 @@
         <header id="header-wrapper">
             <div class="header-items container-fluid">
                 <div class="header-logo">
-                    <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
+                    <a href="<?php echo site_url().'/UserController/Homepage';?>"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
                 <nav id="navbar-wrapper">   
                     <ul>
@@ -32,7 +31,7 @@
                         <li><a href="#">Bantuan</a></li>
                         <li><a href="#">Masuk</a></li>
                     </ul>
-                    <a href="#" class="btn-white btn-regis">Gabung Sekarang</a>
+                    <a href="<?php echo site_url().'/UserController/Register';?>" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
             </div>
         </header>
@@ -48,12 +47,12 @@
                                 <button id="joinFacebook" class="btn-white"><i class="fab fa-facebook-square"></i>Masuk via Facebook</button>
                             </div>
                             <div class="col-12">
-                                <button id="joinEmail" class="btn-white">Masuk via Email</button>
+                                <button id="joinEmail" class="btn-white" onclick="login()">Masuk via Email</button>
                             </div>
                         </div>
                         <div class="col-8 form-join-wrapper">
                             <form action="<?php echo site_url().'/UserController/Login';?>" method="POST">
-                                <div class="row">
+                                <div class="row" id="formlogin">
                                     <div class="col-12">
                                         <div class="input-wrapper">
                                             <input type="text" id="email" name="email">
@@ -85,7 +84,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <button class="btnApply btn-white" type="submit">Masuk Via Email</button>
-                                        <div class='btnJoin'><a href="#" class='href-link'>Pengguna Baru? Daftar Sekarang</a></div>
+                                        <div class='btnJoin'><a href="<?php echo site_url().'/UserController/Register';?>" class='href-link'>Pengguna Baru? Daftar Sekarang</a></div>
                                         <div class='btnMember'><a href="#" class='href-link'>Lupa Kata Sandi?</a></div>
                                     </div>
                                 </div>
@@ -104,7 +103,7 @@
                 </div>
                 <div class="col-4 footer-text">
                     © 2019 Buchanan Group. All Rights Reserved.
-                </div
+                </div>
                 <div class="col-6 footer-sitemap footer-text">
                     <ul>
                         <li><a href="">Ganti Negara</a></li>
@@ -118,5 +117,7 @@
                 </div>
             </div>
         </footer>
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.min.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script> 
     </body>
 </html>

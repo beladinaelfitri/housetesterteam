@@ -182,7 +182,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
                                     <div class="form-wrapper pl-5 pr-5 mt-5">
-                                        <form action="/" method="POST">
+                                        <form action="<?php echo site_url().'/UserController/RegisterAbout';?>" method="POST">
                                             <div class="row m-0 pt-3 pb-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="head-font txt-purple text-size-28">Berapa jumlah orang yang tinggal di rumah anda?</div>
@@ -192,7 +192,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
-                                                        <select>
+                                                        <select name="anak">
                                                             <option <?php if ($jum_orang == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
                                                             <option <?php if ($jum_orang == 'A' ) echo 'selected' ; ?> value="A">Anda Sendiri</option>
                                                             <option <?php if ($jum_orang == 'B' ) echo 'selected' ; ?> value="B">2 Orang</option>
@@ -265,7 +265,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
-                                                        <select>
+                                                        <select name="gaji">
                                                             <option <?php if ($gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
                                                             <option <?php if ($gaji == 'A' ) echo 'selected' ; ?> value="A">Dibawah Rp. 3.000.000</option>
                                                             <option <?php if ($gaji == 'B' ) echo 'selected' ; ?> value="B">Rp. 3.000.000 - Rp 10.000.000</option>
@@ -287,7 +287,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
-                                                        <select>
+                                                        <select name="outcome">
                                                             <option <?php if ($gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
                                                             <option <?php if ($gaji == 'A' ) echo 'selected' ; ?> value="A">0-25%</option>
                                                             <option <?php if ($gaji == 'B' ) echo 'selected' ; ?> value="B">25%-49%</option>
@@ -370,6 +370,7 @@
                                                     <div class="input-error">
                                                         <span>
                                                             <!-- Error -->
+                                                            <?= form_error('email') ?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -383,6 +384,7 @@
                                                     <div class="input-error">
                                                         <span>
                                                             <!-- Error -->
+                                                            <?= form_error('numphone') ?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -442,7 +444,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address5" name="address" required value="<?=  $kab;?>">
+                                                        <input type="text" id="address5" name="address5" required value="<?=  $kab;?>">
                                                         <label for="lastname">Kabupaten *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -565,7 +567,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
                                     <div class="form-wrapper">
-                                        <form action="/" method="POST">
+                                        <form action="<?php echo site_url().'/UserController/editSecurity';?>" method="POST">
                                             <div class="row pt-3">
                                                 <div class="col-12 input-outer">
                                                     <p class="text-size-18 txt-black">Kata sandi membutuhkan: <span class="pass-small">huruf kecil</span>, <span class="pass-num">angka</span>, <span class="pass-special">spesial karakter (!@#$%*)</span>, <span class="pass-len">6 karakter atau lebih</span></p>
@@ -574,7 +576,7 @@
                                             <div class="row pt-3">
                                                 <div class="col-8 input-outer">
                                                     <div class="input-wrapper">
-                                                        <input type="password" id="password" name="password" required>
+                                                        <input type="password" id="password" name="password" required value="<?= $password;?>">
                                                         <label for="password">Kata sandi</label>
                                                     </div>
                                                     <div class="input-error">
@@ -587,7 +589,7 @@
                                             <div class="row pt-3">
                                                 <div class="col-8 input-outer">
                                                     <div class="input-wrapper">
-                                                        <input type="password" id="repassword" name="repassword" required>
+                                                        <input type="password" id="repassword" name="repassword" required  value="<?= $password;?>">
                                                         <label for="repassword">Konfirmasi kata sandi</label>
                                                     </div>
                                                     <div class="input-error">
@@ -605,7 +607,7 @@
                                             <div class="row pt-3">
                                                 <div class="col-12 input-outer">
                                                     <div class="input-wrapper">
-                                                        <input type="radio" id="vsbl1" name="comms">
+                                                        <input type="radio" id="vsbl1" name="comms1">
                                                         <label for="vsbl1">Ya - saya setuju bantuan ini membuat review saya lebih berharga</label>
                                                     </div>
                                                     <div class="input-error">
@@ -618,7 +620,7 @@
                                             <div class="row pt-3">
                                                 <div class="col-12 input-outer">
                                                     <div class="input-wrapper">
-                                                        <input type="radio" id="vsbl2" name="comms">
+                                                        <input type="radio" id="vsbl2" name="comms1">
                                                         <label for="vsbl2">Tidak - saya pilih tanpa nama (anonimus)</label>
                                                     </div>
                                                     <div class="input-error">

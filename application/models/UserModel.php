@@ -77,18 +77,6 @@ class UserModel extends CI_Model {
         }
     }
 
-    public function cekEmail($user){
-        $this->db->select('email')->from('member');
-        $this->db->where('email', $user);
-        return $this->db->get();
-    }
-
-    public function cekPw($user){
-        $this->db->select('password')->from('member');
-        $this->db->where('password', $user);
-        return $this->db->get();
-    }
-
     public function searchUser($email)
     {
         $this->db->select('*')->from('member');
@@ -98,11 +86,11 @@ class UserModel extends CI_Model {
     }
 
     public function editProfile($data) {
-        // Menerima masukkan Username yang akan dicek
+        $this->db->where('email', $this->session->userdata('email'));
         $this->db->set('firstname', $data['firstname']);
         $this->db->set('email', $data['email']);
         $this->db->set('lastname', $data['lastname']);
-        $this->db->where('email', $this->session->userdata('email'));
+        $this->db->set('email', $data['email']);
         $this->db->set('hp', $data['phonenum']);
         $this->db->set('alamat', $data['address']);
         $this->db->set('alamat_dua', $data['address2']);
@@ -119,6 +107,19 @@ class UserModel extends CI_Model {
             return FALSE;
         }
     }
+
+    public function editSecure($data) {
+        $this->db->where('email', $this->session->userdata('email'));
+        $this->db->set('password', $data);
+
+        $insert = $this->db->update('member');
+        if ($insert){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
 
     
    

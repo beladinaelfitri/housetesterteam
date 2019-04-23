@@ -146,54 +146,93 @@ class UserController extends CI_Controller {
     }
 
     public function editRincian(){
-        $this->form_validation->set_rules('firstname','Nama Depan','required');
-        $this->form_validation->set_rules('lastname','Nama keluarga','required');
-        $this->form_validation->set_rules('email','Email','required');
-        $this->form_validation->set_rules('phonenum','Telepon','required');
-        $this->form_validation->set_rules('address','Alamat','required');
-        $this->form_validation->set_rules('address2','Alamat 2','required');
-        $this->form_validation->set_rules('address3','Kelurahan','required');
-        $this->form_validation->set_rules('address4','Kecamatan','required');
-        $this->form_validation->set_rules('address5','Kabupaten','required');
-        $this->form_validation->set_rules('prov','Provinsi','required');
-        $this->form_validation->set_rules('address6','Kodepos','required');
-
-
         $data_member = array (
-            'firstname' => $this->input->post('firstname'),
-            'email' => $this->input->post('email'),
-            'lastname' => $this->input->post('lastname'),
-            'phonenum' => $this->input->post('phonenum'),
-            'address' => $this->input->post('address'),
-            'address2' => $this->input->post('address2'),
-            'address3' => $this->input->post('address3'),
-            'address4' => $this->input->post('address4'),
-            'address5' => $this->input->post('address5'),
-            'prov' => $this->input->post('prov'),
-            'address6' => $this->input->post('address6')
+            'firstname' => $this->input->post('firstname', true),
+            'email' => $this->input->post('email', true),
+            'lastname' => $this->input->post('lastname', true),
+            'phonenum' => $this->input->post('numphone', true),
+            'address' => $this->input->post('address', true),
+            'address2' => $this->input->post('address2', true),
+            'address3' => $this->input->post('address3', true),
+            'address4' => $this->input->post('address4', true),
+            'address5' => $this->input->post('address5', true),
+            'prov' => $this->input->post('prov', true),
+            'address6' => $this->input->post('address6', true)
         );
 
-        if($this->form_validation->run() != false){
-            if ($this->UserModel->cekUser($data_member['email']) && $data_member['email']!=$this->session->userdata('email')) {
-                echo "<script>alert('Email sudah ada!');</script>";
-                //$this->session->set_flashdata('FailReg', 'fail');
+        if ($this->UserModel->cekUser($data_member['email']) && $data_member['email']!=$this->session->userdata('email')) {
+            echo "<script>alert('Email sudah ada!');</script>";
+            //$this->session->set_flashdata('FailReg', 'fail');
+        } else {
+            if($this->UserModel->editProfile($data_member)) {
+                echo "<script>alert('Berhasil Merubah!');</script>";
+                //$this->session->set_flashdata('SuccessReg', 'Berhasil');
+                redirect('UserController/Profile');
             } else {
-                if($this->UserModel->editProfile($data_member)) {
-                    echo "<script>alert('Berhasil Merubah!');</script>";
-                    //$this->session->set_flashdata('SuccessReg', 'Berhasil');
-                    redirect('UserController/Profile');
-                } else {
-                    echo "<script>alert('Data gagal dirubah');</script>";
-                    //$this->session->set_flashdata('FailReg', 'fail');
-                    redirect('UserController/Profile');
-                }
-            }        
-        }else{
-            echo "<script>alert('isi dylubah');</script>";
-            redirect('UserController/Profile');
-        }
+                echo "<script>alert('Data gagal dirubah');</script>";
+                //$this->session->set_flashdata('FailReg', 'fail');
+                redirect('UserController/Profile');
+            }
+        }     
 
     }
+
+    public function editAbout(){
+        $this->form_validation->set_rules('anak','Telepon','required');
+        $this->form_validation->set_rules('child','Alamat','required');
+        $this->form_validation->set_rules('gaji','Kelurahan','required');
+        $this->form_validation->set_rules('child-date','Alamat','required');
+        $this->form_validation->set_rules('outcome','Kecamatan','required');
+
+        $data_member = array (
+            'anak' => $this->input->post('anak'),
+            'child' => $this->input->post('child'),
+            'gaji' => $this->input->post('gaji'),
+            'child-date' => $this->input->post('child-date'),
+            'outcome' => $this->input->post('outcome')
+        );
+
+        if($this->form_validation->run() != false) {
+            if($this->UserModel->registerAbout($data_member)) {
+                $this->session->set_flashdata('SuccessReg', 'Berhasil');
+                redirect('UserController/Profile');
+            } else {
+                $this->session->set_flashdata('FailReg', 'fail');
+                echo "<script>alert('Data gagal dirubah');</script>";
+                redirect('UserController/Profile');
+            }
+        } else {
+            redirect('UserController/Profile');
+        }
+    }
+
+    public function editSecurity(){
+        $this->form_validation->set_rules('password','Kata sandi','required');
+        $this->form_validation->set_rules('repassword','Konfirmasi kata sandi','required');
+        $this->form_validation->set_rules('comms','checkbox','required');
+        $this->form_validation->set_rules('comms1','checkbox','required');
+
+        $pw =  $this->input->post('password');
+
+        if($this->form_validation->run() != false) {
+            if($pw == $this->input->post('repassword')){
+                if($this->UserModel->editSecure($pw)) {
+                    $this->session->set_flashdata('SuccessReg', 'Berhasil');
+                    redirect('UserController/Profile');
+                } else {
+                    $this->session->set_flashdata('FailReg', 'fail');
+                    echo "<script>alert('Data gagal dirubah');</script>";
+                    redirect('UserController/Profile');
+                }
+            } else {
+                redirect('UserController/Profile');
+            }
+        } else {
+            redirect('UserController/Profile');
+        }
+    }
+
+    
 
     public function Profile(){
         $user = $this->session->userdata('email');
@@ -202,36 +241,6 @@ class UserController extends CI_Controller {
         
     }
 
-
-
-//     public function Signin() {
-//         // Nomor 7
-//         // Panggil fungsi findUser
-//         $data = $this->User->findUser();
-//         // Jika User ditemukan
-//         if($data){
-//             // Jika rememberme dicentang
-//             $remember = $this->input->post('remember_me');
-//             if($remember) {
-//                 // Buatkan cookie dengan isi username
-//                 $this->load->helper('cookie');
-//                 set_cookie("logged", $data['username'], $time + 3600);  
-//                 // Arahkan kembali ke Landing
-//                 redirect('Landing');
-//             } else {
-//                 // Buatkan session dengan isi username
-//                 $this->load->library('session');
-//                 $this->session->set_userdata($data['username']);
-//                 // Arahkan kembali ke Landing
-//                 redirect('Landing');
-//             }
-//         } else {
-//             // Jika data tidak ditemukan
-//             // maka buat flashdata yang menandakan data tidak ditemukan
-//             $this->session->set_flashdata('falselogin', 'nodata');
-//             redirect('Landing');
-//         }
-//     }
 
     public function Login(){
         $this->form_validation->set_rules('email','Email','required');

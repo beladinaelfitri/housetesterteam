@@ -20,7 +20,7 @@
         <header id="header-wrapper">
             <div class="header-items container-fluid">
                 <div class="header-logo">
-                    <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
+                    <a href="<?php echo site_url().'/UserController/Homepage';?>"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
                 <nav id="navbar-wrapper">
                     <ul>
@@ -29,9 +29,9 @@
                         <li><a href="#">Terbaik</a></li>
                         <li><a href="#">Tanya Jawab</a></li>
                         <li><a href="#">Bantuan</a></li>
-                        <li><a href="#">Masuk</a></li>
+                        <li><a href="<?php echo site_url().'/UserController/Login';?>">Masuk</a></li>
                     </ul>
-                    <a href="#" class="btn-white btn-regis">Gabung Sekarang</a>
+                    <a href="<?php echo site_url().'/UserController/Register';?>" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
             </div>
         </header>
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="col-12">
                                         <button class="btnApply btn-white" type="submit">Kirimkan</button>
-                                        <div class='btnMember'><a href="#" class='href-link'>Sudah menjadi member?</a></div>
+                                        <div class='btnMember'><a href="<?php echo site_url().'/UserController/Login';?>" class='href-link'>Sudah menjadi member?</a></div>
                                     </div>
                                 </div>
                             </form>
