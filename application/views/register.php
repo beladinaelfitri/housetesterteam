@@ -9,8 +9,8 @@
         <title>Home Tester Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="assets/css/style.css">
-        <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
     </head>
     <body class='body-secondary'>
         <!--[if lt IE 7]>
@@ -19,7 +19,7 @@
         <header id="header-wrapper">
             <div class="header-items container-fluid">
                 <div class="header-logo">
-                    <a href="#"><img src="assets/img/htc_logo2.png" alt="Header Logo"></a>
+                    <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
                 <nav id="navbar-wrapper">
                     <ul>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="col-8 form-join-wrapper">
-                            <form action="/" method="POST">
+                            <form action="<?php echo site_url().'/UserController/Register';?>" method="POST">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="input-wrapper">
@@ -61,7 +61,7 @@
                                             <label for="firstname">Nama depan</label>
                                         </div>
                                         <div class="input-error">
-                                            <span><!-- Error --></span>
+                                            <span class="form-text text-danger"><?= form_error('firstname') ?></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -70,7 +70,7 @@
                                             <label for="email">Email</label>
                                         </div>
                                         <div class="input-error">
-                                            <span><!-- Error --></span>
+                                            <span class="form-text text-danger"><?= form_error('email') ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
             <div class="footer-items">
                 <div class="col-2 footer-logo">
                     <a href="#" target="_blank">
-                        <img src="assets/img/bg-logo2_negative.png" alt="Footer Logo">
+                        <img src="<?php echo base_url().'assets/img/bg-logo2_negative.png'?>" alt="Footer Logo">
                     </a>
                 </div>
                 <div class="col-4 footer-text">
