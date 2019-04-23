@@ -30,7 +30,7 @@
                         <li><a href="#">Terbaik</a></li>
                         <li><a href="#">Tanya Jawab</a></li>
                         <li><a href="#">Bantuan</a></li>
-                        <li><a href="#">Masuk</a></li>
+                        <li><a href="<?php echo site_url().'/UserController/Login';?>">Masuk</a></li>
                     </ul>
                     <a href="#" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
