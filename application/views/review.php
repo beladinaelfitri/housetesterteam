@@ -242,7 +242,7 @@
                                                 <div class="rev-usermedia col-6">
                                                     <ul class="list-unstyled m-0 p-0">
                                                         <li>
-                                                            <a href="#"><img src="assets/img/review/1.jpeg"></a>
+                                                            <a href="#"><img src="<?php echo base_url().'assets/img/assets/img/review/1.jpeg'?>"></a>
                                                         </li>
                                                     </ul>
                                                 </div>
