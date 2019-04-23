@@ -143,7 +143,7 @@
                                         <div class="col-2">
                                             <div class="ri-pp">
                                                 <a href="#">
-                                                    <div style="background-image:url('assets/img/profile/1.gif')"></div>
+                                                    <div style="background-image:url('<?php echo base_url().'assets/img/profile/1.gif'?>')"></div>
                                                 </a>
                                             </div>
                                             <div class="ri-info">
