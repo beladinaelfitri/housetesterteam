@@ -55,7 +55,7 @@
                 <div class="container-inner col-12 pt-5 pb-5 mb-5">
                     <div class="row mb-4">
                         <div class="col-4">
-                            <div class="rev-img">
+                            <div class="rev-img" style="width: 300px; height: 300px">
                                 <img src="<?php echo base_url().'assets/img/products/newpotabee.jpg'?>" alt="Potabee Potato Chips Rasa Ayam Bakar">
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                                                 <div class="rev-usermedia col-6">
                                                     <ul class="list-unstyled m-0 p-0">
                                                         <li>
-                                                            <a href="#"><img src="<?php echo base_url().'assets/img/assets/img/review/1.jpeg'?>"></a>
+                                                            <a href="#"><img src="<?php echo base_url().'assets/img/review/1.jpeg'?>"></a>
                                                         </li>
                                                     </ul>
                                                 </div>
