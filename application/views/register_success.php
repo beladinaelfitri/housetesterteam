@@ -39,7 +39,7 @@
             <div class="container-fluid">
                 <div class="section-container signup-section">
                     <div class="col-12 section-hd">
-                        <h2>Hai <!-- Name -->, ayo lengkapi profil Home Tester Club kamu</h2>
+                        <h2>Hai <?php echo $firstname; ?> <!-- Name -->, ayo lengkapi profil Home Tester Club kamu</h2>
                         <p class="body-font">Untuk bisa memberikan info tentang uji coba produk yang sesuai dengan kamu, kami butuh sedikit informasi rincian tentang kamu.</p>
                         <ul class="nav tabs" id="myTab" role="tablist">
                             <li class="nav-item"><a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Tentang Kamu</a></li>
