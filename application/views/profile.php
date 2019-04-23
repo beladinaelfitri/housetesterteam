@@ -18,7 +18,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <header id="header-wrapper">
+        <<header id="header-wrapper">
             <div class="header-items container-fluid">
                 <div class="header-logo">
                     <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
@@ -28,11 +28,15 @@
                         <li><a href="#">Review & Komentar</a></li>
                         <li><a href="#">Teruji di Rumah</a></li>
                         <li><a href="#">Terbaik</a></li>
-                        <li><a href="#">Tanya Jawab</a></li>
-                        <li><a href="#">Bantuan</a></li>
-                        <li><a href="#">Masuk</a></li>
+                        <li>
+                            <a href="#" class="username"><span>Hai, <?=  $firstname;?></span>
+                                <div class="head-profile">
+                                    <img src="">
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="<?php echo site_url().'/UserController/Logout';?>">Keluar</a></li>
                     </ul>
-                    <a href="#" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
             </div>
         </header>
@@ -667,6 +671,14 @@
                                                 </div>
                                             </div>
                                         </form>
+
+                                    </div>
+                                    <div class="col-xs-12">        
+                                        <hr class="margin-b30">
+                                        <h3 class="heading-font text-bold txt-purple margin-b20">Kamu ingin menghapus akunmu?</h3>
+                                        <p class="paragraph-txt txt-black">Sayang sekali kamu mau pergi. Untuk menghapus akun, klik link di bawah ini. Kalau bisa, beritahu kami alasan kamu pergi.</p>
+                                        <a class="href-link" href="<?php echo site_url().'/UserController/deleteUser';?>">HAPUS AKUN SAYA</a>
+                                        <hr class="margin-t30">
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="mybadges" role="tabpanel" aria-labelledby="mybadges-tab">

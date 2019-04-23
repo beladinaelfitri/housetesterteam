@@ -232,8 +232,6 @@ class UserController extends CI_Controller {
         }
     }
 
-    
-
     public function Profile(){
         $user = $this->session->userdata('email');
         $data_user = $this->UserModel->searchUser($user);
@@ -241,6 +239,11 @@ class UserController extends CI_Controller {
         
     }
 
+    public function deleteUser(){
+        $user = $this->session->userdata('email');
+        $this->UserModel->deleteUser($user);
+        redirect('UserController/Homepage');        
+    }
 
     public function Login(){
         $this->form_validation->set_rules('email','Email','required');
@@ -273,6 +276,11 @@ class UserController extends CI_Controller {
 
     public function Logout(){
         $this->session->sess_destroy();
-        redirect(base_url('login'));
+        $this->load->view('login');
+    }
+
+    public function Homepage(){
+        $this->load->view('homepage');
+        
     }
 }

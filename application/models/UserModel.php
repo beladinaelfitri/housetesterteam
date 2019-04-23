@@ -120,6 +120,11 @@ class UserModel extends CI_Model {
         }
     }
 
+    public function deleteUser($email){
+        $this->db->where('email', $email);
+        $this->db->delete('member');
+    }
+
 
     
    
