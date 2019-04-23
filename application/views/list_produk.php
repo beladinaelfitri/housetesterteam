@@ -305,7 +305,7 @@
             <div class="container-fluid">
                 <div class="row pb-4">
                     <div class="marketing-logo col-10">
-                        <img src="assets/img/footer-logo_black.png" alt="Footer Logo">
+                        <img src="<?php echo base_url().'assets/img/footer-logo_black.png'?>" alt="Footer Logo">
                     </div>
                     <div class="col-2 text-right">
                         <a href="" class="text-dark"><i class="fab fa-facebook-square fa-2x"></i></a>
