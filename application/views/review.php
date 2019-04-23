@@ -21,7 +21,7 @@
         <header id="header-wrapper">
             <div class="header-items container-fluid">
                 <div class="header-logo">
-                    <a href="#"><img src="assets/img/htc_logo2.png" alt="Header Logo"></a>
+                    <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
                 <nav id="navbar-wrapper">
                     <ul>
