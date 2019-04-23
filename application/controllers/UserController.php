@@ -283,4 +283,14 @@ class UserController extends CI_Controller {
         $this->load->view('homepage');
         
     }
+
+    public function Review(){
+        $this->load->view('review');
+        
+    }
+
+    public function Produk(){
+        $this->load->view('list_produk');
+        
+    }
 }
