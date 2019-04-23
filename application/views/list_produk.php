@@ -164,7 +164,7 @@
                             <div class="col-4 mb-4">
                                 <div class="revlist-item">
                                     <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/htc_logo2.png'?>assets/img/products/lifebuoymatcha.jpg')"></div></a>
+                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/lifebuoymatcha.jpg'?>')"></div></a>
                                     </div>
                                     <div class='revlist-head'>
                                         <a hre="#">
