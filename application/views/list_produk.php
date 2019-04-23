@@ -32,7 +32,7 @@
                         <li><a href="#">Bantuan</a></li>
                         <li><a href="#">Masuk</a></li>
                     </ul>
-                    <a href="#" class="btn-white btn-regis">Gabung Sekarang</a>
+                    <a href="<?php echo site_url().'/UserController/Register';?>" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
             </div>
         </header>
@@ -338,8 +338,8 @@
                 </div>
             </div>
         </footer>
-        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="assets/js/popper.min.js"></script> 
-        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.min.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script> 
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/popper.min.js'?>"></script> 
     </body>
 </html>

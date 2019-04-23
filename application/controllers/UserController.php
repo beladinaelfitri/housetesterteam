@@ -286,7 +286,6 @@ class UserController extends CI_Controller {
 
     public function Review(){
         $this->load->view('review');
-        
     }
 
     public function Produk(){
