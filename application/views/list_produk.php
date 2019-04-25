@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Home Tester Club</title>
+        <title>Review Produk | Home Tester Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon shortcut" href="https://d2vtntcxpdw15n.cloudfront.net/img3/favicon.ico" type="image/x-icon">
@@ -18,21 +18,25 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <header id="header-wrapper">
+        <header id="header-wrapper" style="background: #FF6A5B">
             <div class="header-items container-fluid">
                 <div class="header-logo">
                     <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
                 <nav id="navbar-wrapper">
                     <ul>
-                        <li><a href="#">Review & Komentar</a></li>
+                        <li><a href="<?php echo site_url().'/UserController/Produk';?>">Review & Komentar</a></li>
                         <li><a href="#">Teruji di Rumah</a></li>
                         <li><a href="#">Terbaik</a></li>
-                        <li><a href="#">Tanya Jawab</a></li>
-                        <li><a href="#">Bantuan</a></li>
-                        <li><a href="#">Masuk</a></li>
+                        <li>
+                            <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $datau->firstname ?></span>
+                                <div class="head-profile">
+                                    <img src="<?php echo base_url().'assets/img/profile/1.gif'?>">
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="<?php echo site_url().'/UserController/Logout';?>">Keluar</a></li>
                     </ul>
-                    <a href="<?php echo site_url().'/UserController/Register';?>" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
             </div>
         </header>
@@ -123,8 +127,8 @@
                             <div class="cat-inner">
                                 <div class="cat-head text-size-28 head-font mb-4">Kategori</div>
                                 <div class="cat-item text-size-18 body-font mb-1">Dapur Makanan</div>
-                                <div class="cat-item text-size-18 body-font mb-1">Kesehatan & Kebersihan</div>
                                 <div class="cat-item text-size-18 body-font mb-1">Minuman Ringan</div>
+                                <div class="cat-item text-size-18 body-font mb-1">Kesehatan & Kebersihan</div>
                                 <div class="cat-item text-size-18 body-font mb-1">Rambut & Kecantikan</div>
                                 <div class="cat-item text-size-18 body-font mb-1">Bayi & balita</div>
                                 <div class="cat-item text-size-18 body-font mb-1">Pembersih</div>
@@ -134,168 +138,35 @@
                             </div>
                         </div>
                         <div class="row revlist-wrapper col-9">
-                            <div class="col-4 mb-4">
-                                <div class="revlist-item">
-                                    <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/newpotabee.jpg'?>')"></div></a>
-                                    </div>
-                                    <div class='revlist-head'>
-                                        <a hre="#">
-                                            <h5 class="text-center">Potabee Potato Chips Rasa Ayam Bakar</h5>
-                                        </a>
-                                    </div>
-                                    <div class="revlist-star text-center text-size-32 pt-3">
-                                        <span class="revlist-star-wrap">
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                        </span>
-                                    </div>
-                                    <div class="revlist-count text-center body-font text-size-18 pt-3">
-                                        4,8 dari <a href="#" class="txt-black text-decoration-none"><span>184 Review & Komentar</span></a>
-                                    </div>
-                                    <div class="revlist-join text-center head-font text-size-18 mt-1">
-                                        <span class="mr-3">Pernah mencoba?</span><span><a href="#" class="text-uppercase txt-black text-decoration-none">Berikan peringkat</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 mb-4">
-                                <div class="revlist-item">
-                                    <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/lifebuoymatcha.jpg'?>')"></div></a>
-                                    </div>
-                                    <div class='revlist-head'>
-                                        <a hre="#">
-                                            <h5 class="text-center">Lifebuoy Matcha</h5>
-                                        </a>
-                                    </div>
-                                    <div class="revlist-star text-center text-size-32 pt-3">
-                                        <span class="revlist-star-wrap">
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                        </span>
-                                    </div>
-                                    <div class="revlist-count text-center body-font text-size-18 pt-3">
-                                        4,7 dari <a href="#" class="txt-black text-decoration-none"><span>56 Review & Komentar</span></a>
-                                    </div>
-                                    <div class="revlist-join text-center head-font text-size-18 mt-1">
-                                        <span class="mr-3">Pernah mencoba?</span><span><a href="#" class="text-uppercase txt-black text-decoration-none">Berikan peringkat</a></span>
+                            <?php foreach ($datal as $d ) {?>
+                                <div class="col-4 mb-4">
+                                    <div class="revlist-item">
+                                        <div class="revlist-img">
+                                            <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/'?><?= $d->gambar;?>')"></div></a>
+                                        </div>
+                                        <div class='revlist-head'>
+                                            <a href="<?php echo site_url().'/UserController/Review/';?><?= $d->id_produk;?>"> 
+                                                <h5 class="text-center"><?= $d->nama_produk;?></h5>
+                                            </a>
+                                        </div>
+                                        <div class="revlist-star text-center text-size-32 pt-3">
+                                            <span class="revlist-star-wrap">
+                                                <span class="fas fa-star"></span>
+                                                <span class="fas fa-star"></span>
+                                                <span class="fas fa-star"></span>
+                                                <span class="fas fa-star"></span>
+                                                <span class="fas fa-star"></span>
+                                            </span>
+                                        </div>
+                                        <div class="revlist-count text-center body-font text-size-18 pt-3">
+                                            <?= $d->jum_star;?> dari <a href="<?php echo site_url().'/UserController/Review/';?><?= $d->id_produk;?>" class="txt-black text-decoration-none"><span><?= $d->banyak_review;?> Review & Komentar</span></a>
+                                        </div>
+                                        <div class="revlist-join text-center head-font text-size-18 mt-1">
+                                            <span class="mr-3">Pernah mencoba?</span><span><a href="#" class="text-uppercase txt-black text-decoration-none">Berikan peringkat</a></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-4 mb-4">
-                                <div class="revlist-item">
-                                    <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/nissinvegetable.jpg'?>')"></div></a>
-                                    </div>
-                                    <div class='revlist-head'>
-                                        <a hre="#">
-                                            <h5 class="text-center">Nissin Vegetable Crackers</h5>
-                                        </a>
-                                    </div>
-                                    <div class="revlist-star text-center text-size-32 pt-3">
-                                        <span class="revlist-star-wrap">
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                        </span>
-                                    </div>
-                                    <div class="revlist-count text-center body-font text-size-18 pt-3">
-                                        4,7 dari <a href="#" class="txt-black text-decoration-none"><span>57 Review & Komentar</span></a>
-                                    </div>
-                                    <div class="revlist-join text-center head-font text-size-18 mt-1">
-                                        <span class="mr-3">Pernah mencoba?</span><span><a href="#" class="text-uppercase txt-black text-decoration-none">Berikan peringkat</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 mb-4">
-                                <div class="revlist-item">
-                                    <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/calpicosoda.jpg'?>')"></div></a>
-                                    </div>
-                                    <div class='revlist-head'>
-                                        <a hre="#">
-                                            <h5 class="text-center">Calpico Soda Orange</h5>
-                                        </a>
-                                    </div>
-                                    <div class="revlist-star text-center text-size-32 pt-3">
-                                        <span class="revlist-star-wrap">
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                        </span>
-                                    </div>
-                                    <div class="revlist-count text-center body-font text-size-18 pt-3">
-                                        5,0 dari <a href="#" class="txt-black text-decoration-none"><span>15 Review & Komentar</span></a>
-                                    </div>
-                                    <div class="revlist-join text-center head-font text-size-18 mt-1">
-                                        <span class="mr-3">Pernah mencoba?</span><span><a href="#" class="text-uppercase txt-black text-decoration-none">Berikan peringkat</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 mb-4">
-                                <div class="revlist-item">
-                                    <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('<?php echo base_url().'assets/img/products/rinsogentle.jpg'?>')"></div></a>
-                                    </div>
-                                    <div class='revlist-head'>
-                                        <a hre="#">
-                                            <h5 class="text-center">Rinso Anti Noda Gentle</h5>
-                                        </a>
-                                    </div>
-                                    <div class="revlist-star text-center text-size-32 pt-3">
-                                        <span class="revlist-star-wrap">
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                        </span>
-                                    </div>
-                                    <div class="revlist-count text-center body-font text-size-18 pt-3">
-                                        4,9 dari <a href="#" class="txt-black text-decoration-none"><span>42 Review & Komentar</span></a>
-                                    </div>
-                                    <div class="revlist-join text-center head-font text-size-18 mt-1">
-                                        <span class="mr-3">Pernah mencoba?</span><span><a href="#" class="text-uppercase txt-black text-decoration-none">Berikan peringkat</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 mb-4">
-                                <div class="revlist-item">
-                                    <div class="revlist-img">
-                                        <a href="#"><div style="background-image:url('assets/img/products/nestleisocal.jpg')"></div></a>
-                                    </div>
-                                    <div class='revlist-head'>
-                                        <a hre="#">
-                                            <h5 class="text-center">Nestle Isocal</h5>
-                                        </a>
-                                    </div>
-                                    <div class="revlist-star text-center text-size-32 pt-3">
-                                        <span class="revlist-star-wrap">
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                            <span class="fas fa-star"></span>
-                                        </span>
-                                    </div>
-                                    <div class="revlist-count text-center body-font text-size-18 pt-3">
-                                        <a href="#" class="txt-black text-decoration-none"><span>11 Review & Komentar</span></a>
-                                    </div>
-                                    <div class="revlist-join text-center head-font text-size-18 mt-1">
-                                        <span class="mr-3">Pernah mencoba?</span><span><a href="#" class="text-uppercase txt-black text-decoration-none">Berikan peringkat</a></span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

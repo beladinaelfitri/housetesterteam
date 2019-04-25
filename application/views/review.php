@@ -18,7 +18,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <header id="header-wrapper">
+        <header id="header-wrapper" style="background: #FF6A5B">
             <div class="header-items container-fluid">
                 <div class="header-logo">
                     <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
@@ -28,11 +28,15 @@
                         <li><a href="<?php echo site_url().'/UserController/Produk';?>">Review & Komentar</a></li>
                         <li><a href="#">Teruji di Rumah</a></li>
                         <li><a href="#">Terbaik</a></li>
-                        <li><a href="#">Tanya Jawab</a></li>
-                        <li><a href="#">Bantuan</a></li>
-                        <li><a href="<?php echo site_url().'/UserController/Login';?>">Masuk</a></li>
+                        <li>
+                            <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $datau->firstname;?> </span>
+                                <div class="head-profile">
+                                    <img src="<?php echo base_url().'assets/img/profile/1.gif'?>">
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="<?php echo site_url().'/UserController/Logout';?>">Keluar</a></li>
                     </ul>
-                    <a href="#" class="btn-white btn-regis">Gabung Sekarang</a>
                 </nav>
             </div>
         </header>
@@ -42,8 +46,9 @@
                     <div class="row mb-3    ">
                         <div class="col-12 mt-2 pl-0">
                             <ul class="breadcrumbs p-0 m-0 list-unstyled body-font text-size-18">
-                                <li>Halaman Utama</li>
-                                <li>Review & Komentar</li>
+                                <li><a href="<?php echo site_url().'/UserController/Produk';?>">Review & Komentar</a></li>
+                                <li><?= $datai->nama_kategori?></li>
+                                <li><?= $datai->nama_produk?></li>
                             </ul>
                         </div>
                     </div>
@@ -56,28 +61,28 @@
                     <div class="row mb-4">
                         <div class="col-4">
                             <div class="rev-img">
-                                <img src="<?php echo base_url().'assets/img/products/newpotabee.jpg'?>" alt="Potabee Potato Chips Rasa Ayam Bakar">
+                                <img src="<?php echo base_url().'assets/img/products/'?><?= $datai->gambar?>" alt="Potabee Potato Chips Rasa Ayam Bakar">
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="rev-title head-font text-size-35">Potabee Potato Chips Rasa Ayam Bakar</h2>
-                                    <div class="rev-desc body-font text-size-16 mt-3 mb-1">
-                                        <p class="mb-0">Keripik kentang dengan rasa nikmat yang belum pernah dimiliki oleh keripik kentang lainnya. Rasa gurih yang khas bertabur di seluruh permukaan keripik kentang yang begitu tipis, sehingga menghasilkan keripik yang sangat lezat dan nikmat.</p>
-                                    </div>
-                                    <div class="rev-star text-size-32 mb-2">
-                                        <span class="rev-star-wrap">
-                                            <span class="fas fa-star mr-1"></span>
-                                            <span class="fas fa-star mr-1"></span>
-                                            <span class="fas fa-star mr-1"></span>
-                                            <span class="fas fa-star mr-1"></span>
-                                            <span class="fas fa-star"></span>
-                                        </span>
-                                    </div>
-                                    <div class="rev-count body-font text-size-18">
-                                        <span>4,8 dari <span></span>184 Review Komentar</span>
-                                    </div>
+                                        <h2 class="rev-title head-font text-size-35"><?= $datai->nama_produk;?></h2>
+                                        <div class="rev-desc body-font text-size-16 mt-3 mb-1">
+                                            <p class="mb-0"><?= $datai->deskripsi;?></p>
+                                        </div>
+                                        <div class="rev-star text-size-32 mb-2">
+                                            <span class="rev-star-wrap">
+                                                <span class="fas fa-star mr-1"></span>
+                                                <span class="fas fa-star mr-1"></span>
+                                                <span class="fas fa-star mr-1"></span>
+                                                <span class="fas fa-star mr-1"></span>
+                                                <span class="fas fa-star"></span>
+                                            </span>
+                                        </div>
+                                        <div class="rev-count body-font text-size-18">
+                                            <span><?= $datai->jum_star;?> dari <span></span><?= $datai->banyak_review;?> Review Komentar</span>
+                                        </div>
                                 </div>
                                 <div class="col-5 text-right">
                                     <div class="rev-review mb-4">
@@ -493,7 +498,7 @@
                                                 <a class="btn-white">Upload</a>
                                             </label>
                                             <label for="rev-videos">
-                                                <a class="btn-white">Upload</a>
+                                                <a class="btn-white">Tambah Video</a>
                                             </label>
                                         </div>
                                     </div>

@@ -236,7 +236,6 @@ class UserController extends CI_Controller {
         $user = $this->session->userdata('email');
         $data_user = $this->UserModel->searchUser($user);
         $this->load->view('profile', $data_user);
-        
     }
 
     public function deleteUser(){
@@ -284,12 +283,20 @@ class UserController extends CI_Controller {
         
     }
 
-    public function Review(){
-        $this->load->view('review');
+    public function Review($prod){
+        $user = $this->session->userdata('email');
+        
+        $data_user = $this->UserModel->searchUser($user);
+        $detail = $this->UserModel->cariProduk($prod);
+
+        $this->load->view('review', ['datau'=> $data_user, 'datai'=> $detail]);
     }
 
     public function Produk(){
-        $this->load->view('list_produk');
+        $user = $this->session->userdata('email');
         
+        $data_user = $this->UserModel->searchUser($user);
+        $list = $this->UserModel->listProduk();
+        $this->load->view('list_produk',['datau'=> $data_user, 'datal'=> $list]);
     }
 }

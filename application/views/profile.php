@@ -18,7 +18,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <<header id="header-wrapper">
+        <header id="header-wrapper" style="background: #FF6A5B">
             <div class="header-items container-fluid">
                 <div class="header-logo">
                     <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
@@ -29,9 +29,9 @@
                         <li><a href="#">Teruji di Rumah</a></li>
                         <li><a href="#">Terbaik</a></li>
                         <li>
-                            <a href="#" class="username"><span>Hai, <?=  $firstname;?></span>
+                            <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $firstname ?></span>
                                 <div class="head-profile">
-                                    <img src="">
+                                    <img src="<?php echo base_url().'assets/img/profile/1.gif'?>">
                                 </div>
                             </a>
                         </li>
@@ -59,11 +59,7 @@
                                         <div class="pp-wrapper">
                                             <div class="pp-holder" style="background-image:url('<?php echo base_url().'assets/img/profile/1.gif'?>')"></div>
                                         </div>
-                                        <!--<div class="nopp-wrapper">
-                                            <div class="nopp-holder">
-                                                <span>K</span>
-                                            </div>
-                                        </div>-->
+                                    
                                         <div class="nopp-upload">
                                             <input type="file" id="nopp-upload">
                                             <label class="nm" for="nopp-upload">

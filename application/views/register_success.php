@@ -18,7 +18,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <header id="header-wrapper">
+        <header id="header-wrapper" style="background: #FF6A5B">
             <div class="header-items container-fluid">
                 <div class="header-logo">
                     <a href="<?php echo site_url().'/UserController/Homepage';?>"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
@@ -369,7 +369,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 input-outer tr">
-                                                <button class="btnBack btn-white" type="button">Kembali</button>
+                                                <button class="btnBack btn-white" type="button" data-toggle="tab" data-target="#profile">Kembali</button>
                                                 <button class="btnApply btn-white" type="submit">Kirimkan</button>
                                             </div>
                                         </div>
