@@ -9,7 +9,7 @@
         <title>Home Tester Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon shortcut" href="https://d2vtntcxpdw15n.cloudfront.net/img3/favicon.ico" type="image/x-icon">
+        <link rel="icon shortcut" href="<?php echo base_url().'assets/img/favicon.ico'?>" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>"> 
@@ -18,8 +18,8 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <header id="header-wrapper" style="background: #FF6A5B">
-            <div class="header-items container-fluid">
+        <header id="header-wrapper" style="background: #06A9B5">
+            <div class="header-items container-fluid" style="background: #06A9B5">
                 <div class="header-logo">
                     <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
@@ -415,17 +415,44 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                        <script>
+                            $(document).ready(function(){
+                                $(".haveTried").hide();
+                                $(".haveNotTried").hide();
+                                $("#yconfbtn").click(function(){
+                                    $(".haveTried").show();
+                                    $(".haveNotTried").hide();
+                                });
+                                $("#nconfbtn").click(function(){
+                                    $(".haveNotTried").show();
+                                    $(".haveTried").hide();
+                                });
+                            });
+                        </script>
+                        <div class="rev-des mb-3">
+                            <p>Apakah kamu pernah mencoba produk ini?</p>
+                            <div class="col-12 p-0">
+                                <button id="yconfbtn" class="btn-white" value="y">Ya</button>
+                                <button id="nconfbtn" class="btn-white" value="n">Tidak</button>
+                            </div>
+                        </div>
                         <form action="/">
-                            <div class="rev-des mb-3">
-                                <p>Apakah kamu pernah mencoba produk ini?</p>
-                                <div class="col-12 p-0">
-                                    <button class="btn-white">Ya</button>
-                                    <button class="btn-white">Tidak</button>
+                            <div class="haveNotTried">
+                                <div class="row mb-4">
+                                    <div class="rev-iptcontent col-12">
+                                        <div class="input-wrapper">
+                                            <textarea id="rev-content" name="rev-content" required></textarea>
+                                            <label for="rev-content">Review kamu</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn-white m-auto">Kirimkan</button>
                                 </div>
                             </div>
-                            <div class="haveNotTried">
-
-                            </div>
+                        </form>
+                        <form action="<?php echo site_url().'/UserController/AddReviewY/';?><?= $datai->id_produk?>">
                             <div class="haveTried">
                                 <div class="row">
                                     <div class="rev-iptscore col-12">
@@ -436,7 +463,6 @@
                                             <i class="fa fa-star fa-star-open" title="regular" data-score="3"></i>
                                             <i class="fa fa-star fa-star-open" title="good" data-score="4"></i>
                                             <i class="fa fa-star fa-star-open" title="gorgeous" data-score="5"></i>
-                                            <input name="score">
                                         </div>
                                     </div>
                                 </div>
@@ -460,7 +486,7 @@
                                     <p class="col-12">Tanggal pembelian/dicoba</p>
                                     <div class="rev-iptscore col-4">
                                         <div class="select-wrapper overflow-hidden col-12 p-0">
-                                            <select name='address6'>
+                                            <select name='rev-month'>
                                                 <option value="" selected>Month</option>
                                                 <option value="1">Jan</option>
                                                 <option value="2">Feb</option>
@@ -479,7 +505,7 @@
                                     </div>
                                     <div class="rev-iptscore col-4">
                                         <div class="select-wrapper overflow-hidden col-12 p-0">
-                                            <select name='address6'>
+                                            <select name='rev-year'>
                                                 <option value="" selected>Year</option>
                                                 <option value="2017">2017</option>
                                                 <option value="2018">2018</option>
@@ -512,12 +538,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn-white m-auto">Kirimkan</button>
+                                </div>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-white m-auto">Kirimkan</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

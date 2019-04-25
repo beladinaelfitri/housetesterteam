@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set('Asia/Jakarta');
 
 class UserController extends CI_Controller {
 
@@ -40,7 +41,6 @@ class UserController extends CI_Controller {
     }
 
     public function RegisterProfile(){
-        date_default_timezone_set('Asia/Jakarta');
         $this->form_validation->set_rules('firstname','Nama depan','required');
         $this->form_validation->set_rules('email','Email','required');
         $this->form_validation->set_rules('lastname','Nama keluarga','required');
@@ -294,9 +294,32 @@ class UserController extends CI_Controller {
 
     public function Produk(){
         $user = $this->session->userdata('email');
-        
         $data_user = $this->UserModel->searchUser($user);
         $list = $this->UserModel->listProduk();
         $this->load->view('list_produk',['datau'=> $data_user, 'datal'=> $list]);
+    }
+
+    public function AddReviewY($idprod){
+        $data_review = array (
+            'judul' => $this->input->post('rev-tittle'),
+            'review' => $this->input->post('rev-content'),
+            'bln' => $this->input->post('rev-month'),
+            'thn' => $this->input->post('rev-year'),
+            'foto' => $this->input->post('rev-photos'),
+            'video' => $this->input->post('rev-videos'),
+            'waktu' => date('d M y')
+            //kurang star
+        );
+
+        $user = $this->session->userdata('email');
+        $data_user = $this->UserModel->searchUser($user);
+        if($this->UserModel->tambahReview($data_review, $idprod, $data_user['id_member'])) {
+            $this->session->set_flashdata('SuccessReg', 'Berhasil');
+            redirect('UserController/Produk');
+        } else {
+            $this->session->set_flashdata('FailReg', 'fail');
+            echo "<script>alert('Data gagal dirubah');</script>";
+            redirect('UserController/Produk');
+        }
     }
 }

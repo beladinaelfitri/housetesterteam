@@ -74,11 +74,11 @@
                                     </div>
                                     <div class="col-12">
                                         <div class='remember-wrapper'>
-                                            <input type="checkbox" name="remember">
+                                            <input type="checkbox" name="remember" style="height: 30px; width: 30px;">
                                             <label for="password">
                                                 <span>Ingat saya</span>
                                             </label>
-                                            
+
                                         </div>
                                     </div>
                                 </div>

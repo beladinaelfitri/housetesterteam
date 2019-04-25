@@ -9,7 +9,7 @@
         <title>Home Tester Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon shortcut" href="https://d2vtntcxpdw15n.cloudfront.net/img3/favicon.ico" type="image/x-icon">
+        <link rel="icon shortcut" href="<?php echo base_url().'assets/img/favicon.ico'?>" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>"> 
@@ -98,7 +98,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="col-12">
-                                    <button class="btn-white w-100" type="button">Profil lengkap</button>
+                                    <button class="btn-white w-100" type="button" data-toggle="tab" data-target="#profile">Profil lengkap</button>
                             </div>
                         </div>
                         <div class="col-3">
