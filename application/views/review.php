@@ -452,7 +452,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form action="<?php echo site_url().'/UserController/AddReviewY/';?><?= $datai->id_produk?>">
+                        <form action="<?php echo site_url().'/UserController/AddReviewY/';?><?= $datai->id_produk?>" method="POST">
                             <div class="haveTried">
                                 <div class="row">
                                     <div class="rev-iptscore col-12">
@@ -539,7 +539,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn-white m-auto">Kirimkan</button>
+                                    <button type="submit" class="btn-white m-auto">Kirimkan</button>
                                 </div>
                             </div>
                         </form>

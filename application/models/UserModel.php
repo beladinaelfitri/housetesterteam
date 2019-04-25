@@ -133,9 +133,29 @@ class UserModel extends CI_Model {
         $hasil = $this->db->get();
         return $hasil->row();
     }
+
     public function listProduk(){
         $this->db->select('*')->from('produk');
         $hasil = $this->db->get();
         return $hasil->result();
+    }
+
+    public function tambahReview($data, $prod, $user){
+        $this->db->set('id_produk', $prod);
+        $this->db->set('id_member', $user);
+        $this->db->set('judul', $data['judul']);
+        $this->db->set('comment', $data['review']);
+        $this->db->set('bulan_beli', $data['bln']);
+        $this->db->set('tahun_beli', $data['thn']);
+        $this->db->set('foto', $data['foto']);
+        $this->db->set('video', $data['video']);
+        $this->db->set('rev-time', $data['waktu']);
+
+        $insert = $this->db->insert('review');
+        if ($insert){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 }

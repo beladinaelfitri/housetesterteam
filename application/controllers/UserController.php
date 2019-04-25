@@ -301,7 +301,7 @@ class UserController extends CI_Controller {
 
     public function AddReviewY($idprod){
         $data_review = array (
-            'judul' => $this->input->post('rev-tittle'),
+            'judul' => $this->input->post('rev-title'),
             'review' => $this->input->post('rev-content'),
             'bln' => $this->input->post('rev-month'),
             'thn' => $this->input->post('rev-year'),
@@ -313,7 +313,7 @@ class UserController extends CI_Controller {
 
         $user = $this->session->userdata('email');
         $data_user = $this->UserModel->searchUser($user);
-        if($this->UserModel->tambahReview($data_review, $idprod, $data_user['id_member'])) {
+        if($this->UserModel->tambahReview($data_review, $idprod, $data_user->id_member)) {
             $this->session->set_flashdata('SuccessReg', 'Berhasil');
             redirect('UserController/Produk');
         } else {
