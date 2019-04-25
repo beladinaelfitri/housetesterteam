@@ -300,26 +300,40 @@ class UserController extends CI_Controller {
     }
 
     public function AddReviewY($idprod){
-        $data_review = array (
-            'judul' => $this->input->post('rev-title'),
-            'review' => $this->input->post('rev-content'),
-            'bln' => $this->input->post('rev-month'),
-            'thn' => $this->input->post('rev-year'),
-            'foto' => $this->input->post('rev-photos'),
-            'video' => $this->input->post('rev-videos'),
-            'waktu' => date('d M y')
-            //kurang star
-        );
 
-        $user = $this->session->userdata('email');
-        $data_user = $this->UserModel->searchUser($user);
-        if($this->UserModel->tambahReview($data_review, $idprod, $data_user->id_member)) {
-            $this->session->set_flashdata('SuccessReg', 'Berhasil');
-            redirect('UserController/Produk');
+        $config['upload_path']         = 'assets/img/review/';  
+        $config['allowed_types']       = 'gif|jpg|png'; 
+        $config['max_size']            = 3000;
+        $config['max_width']           = 1024;
+        $config['max_height']          = 768;
+
+        $this->load->library('upload', $config);
+
+        if ( !$this->upload->do_upload('rev-photos')) {
+            echo 'anda gagal upload';
         } else {
-            $this->session->set_flashdata('FailReg', 'fail');
-            echo "<script>alert('Data gagal dirubah');</script>";
-            redirect('UserController/Produk');
+            $file = $this->upload->data();
+            $data_review = array (
+                'judul' => $this->input->post('rev-title'),
+                'review' => $this->input->post('rev-content'),
+                'bln' => $this->input->post('rev-month'),
+                'thn' => $this->input->post('rev-year'),
+                'foto' => $file['rev-photos'],
+                'video' => $this->input->post('rev-videos'),
+                'waktu' => date('d M y')
+                //kurang star
+            );
+
+            $user = $this->session->userdata('email');
+            $data_user = $this->UserModel->searchUser($user);
+            if ($this->UserModel->tambahReview($data_review, $idprod, $data_user->id_member)) {
+                $this->session->set_flashdata('SuccessReg', 'Berhasil');
+                redirect('UserController/Produk');
+            } else {
+                $this->session->set_flashdata('FailReg', 'fail');
+                echo "<script>alert('Data gagal dirubah');</script>";
+                redirect('UserController/Produk');
+            }
         }
     }
 }
