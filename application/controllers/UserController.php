@@ -234,8 +234,9 @@ class UserController extends CI_Controller {
 
     public function Profile(){
         $user = $this->session->userdata('email');
-        $data_user = $this->UserModel->searchUser($user);
-        $this->load->view('profile', $data_user);
+        $duser = $this->UserModel->searchUser($user);
+        $rev = $this->UserModel->getReviewById($duser->id_member);
+        $this->load->view('profile', ['u'=>$duser, 'darev'=>$rev]);
     }
 
     public function deleteUser(){
@@ -289,7 +290,9 @@ class UserController extends CI_Controller {
         $data_user = $this->UserModel->searchUser($user);
         $detail = $this->UserModel->cariProduk($prod);
 
-        $this->load->view('review', ['datau'=> $data_user, 'datai'=> $detail]);
+        $datarev = $this->UserModel->getReviewByProduct($prod);
+
+        $this->load->view('review', ['datau'=> $data_user, 'datai'=> $detail, 'datar'=> $datarev]);
     }
 
     public function Produk(){
@@ -302,10 +305,10 @@ class UserController extends CI_Controller {
     public function AddReviewY($idprod){
 
         $config['upload_path']         = 'assets/img/review/';  
-        $config['allowed_types']       = 'gif|jpg|png'; 
-        $config['max_size']            = 3000;
-        $config['max_width']           = 1024;
-        $config['max_height']          = 768;
+        $config['allowed_types']       = 'gif|jpg|png|jpeg'; 
+        $config['max_size']            = 50000;
+        $config['max_width']           = 5000;
+        $config['max_height']          = 5000;
 
         $this->load->library('upload', $config);
 
@@ -318,7 +321,7 @@ class UserController extends CI_Controller {
                 'review' => $this->input->post('rev-content'),
                 'bln' => $this->input->post('rev-month'),
                 'thn' => $this->input->post('rev-year'),
-                'foto' => $file['rev-photos'],
+                'foto' => $file['file_name'],
                 'video' => $this->input->post('rev-videos'),
                 'waktu' => date('d M y')
                 //kurang star
@@ -335,5 +338,36 @@ class UserController extends CI_Controller {
                 redirect('UserController/Produk');
             }
         }
+    }
+
+    public function UploadPhoto(){
+        $config['upload_path']         = 'assets/img/profile/';  
+        $config['allowed_types']       = 'gif|jpg|png|jpeg'; 
+        $config['max_size']            = 50000;
+        $config['max_width']           = 5000;
+        $config['max_height']          = 5000;
+
+        $this->load->library('upload', $config);
+
+        if ( !$this->upload->do_upload('profile_pho')) {
+            echo 'anda gagal upload';
+        } else {
+            $file = $this->upload->data();
+            $foto_prof = $file['file_name'];
+
+            if ($this->UserModel->addPhoto($foto_prof)) {
+                $this->session->set_flashdata('SuccessReg', 'Berhasil');
+                redirect('UserController/Profile');
+            } else {
+                $this->session->set_flashdata('FailReg', 'fail');
+                echo "<script>alert('Data gagal dirubah');</script>";
+                redirect('UserController/Profile');
+            }
+        }
+    }
+
+    public function DeleteReview($rev){
+        $this->UserModel->deleteRev($rev);
+        redirect('UserController/Profile');        
     }
 }

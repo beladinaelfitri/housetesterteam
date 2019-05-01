@@ -29,7 +29,7 @@
                         <li><a href="#">Teruji di Rumah</a></li>
                         <li><a href="#">Terbaik</a></li>
                         <li>
-                            <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $firstname ?></span>
+                            <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $u->firstname ?></span>
                                 <div class="head-profile">
                                     <img src="<?php echo base_url().'assets/img/profile/1.gif'?>">
                                 </div>
@@ -48,34 +48,37 @@
                             <h2 class="head-font">Tentang Saya</h2>
                         </div>
                         <div class="col-3 tr">
-                            <p class="mt-3 body-font text-14">Anggota Sejak: <?= $regis_time ?><!-- PHP --></p>
+                            <p class="mt-3 body-font text-14">Anggota Sejak: <?= $u->regis_time ?><!-- PHP --></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="row">
                                 <div class="col-6">
-                                    <form action="#" id="frmAvatar" method="post">
+                                    <form action="<?php echo site_url().'/UserController/UploadPhoto';?>" id="frmAvatar" method="post" enctype="multipart/form-data">
                                         <div class="pp-wrapper">
-                                            <div class="pp-holder" style="background-image:url('<?php echo base_url().'assets/img/profile/1.gif'?>')"></div>
+                                            <div class="pp-holder" style="background-image:url('<?php echo base_url().'assets/img/profile/'?><?= $u->photo?>')"></div>
                                         </div>
-                                    
                                         <div class="nopp-upload">
-                                            <input type="file" id="nopp-upload">
+                                            <input name="profile_pho" type="file" id="nopp-upload">
                                             <label class="nm" for="nopp-upload">
-                                                <a class="href-link">Upload</a>
+                                                <a>Upload</a>
                                             </label>
+
+                                        </div>
+                                        <div class="nopp-upload">
+                                            <button type="submit" class="btn-white m-auto">Change</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="col-6">
                                     <ul class="pp-info paragraph-font list-unstyled pl-0 mb-0">
-                                        <li><?=  $firstname;?></li>
-                                        <li><?=  $jk;?></li>
-                                        <li><?=  $bulan,', ', $tahun;?></li>
-                                        <li><?=  $hp;?></li>
-                                        <li><?=  $email;?></li>
-                                        <li><?=  $kab,', ', $prov;?></li>
+                                        <li><?=  $u->firstname;?></li>
+                                        <li><?=  $u->jk;?></li>
+                                        <li><?=  $u->bulan,', ', $u->tahun;?></li>
+                                        <li><?=  $u->hp;?></li>
+                                        <li><?=  $u->email;?></li>
+                                        <li><?=  $u->kab,', ', $u->prov;?></li>
                                         <li>Indonesia</li>
                                     </ul>
                                 </div>
@@ -136,45 +139,21 @@
                                         <!-- COMMENT & REVIEW == NULL -->
                                         <p class="text-16 mt-4">Home Tester Club mengharapkan kontribusi darimu. Kamu belum memberikan review apapun.</p>
                                         <!-- COMMENT & REVIEW != NULL -->
-                                        <div class="reviewlist row mr-0 pb-3">
-                                            <div class="col-2 pl-0">
-                                                <div class="reviewimg-wrap" style="background-image: url('<?php echo base_url().'assets/img/products/miesedapayam.jpg'?>')"></div>
+                                        <?php foreach ($darev as $r ) {?>
+                                            <div class="reviewlist row mr-0 pb-3">
+                                                <div class="col-2 pl-0">
+                                                    <div class="reviewimg-wrap" style="background-image: url('<?php echo base_url().'assets/img/products/'?><?= $r->gambar?>')"></div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <p class="text-18 mt-5"><?= $r->nama_produk?></p>
+                                                    <p class="paragraph-font text-size-18"><?= $r->comment?></p>
+                                                </div>
+                                                <div class="col-2 text-right pr-0">
+                                                    <p class="body-font text-size-14 mt-5"><?= $r->rev_time?></p>
+                                                    <a href="<?php echo site_url().'/UserController/DeleteReview/';?><?= $r->id_review;?>" class='txt-black'><i class="far fa-trash-alt fa-2x mt-3"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="col-8">
-                                                <p class="text-18 mt-5">Mie Sedaap Instant Mi Goreng rasa Mi Ayam Istimewa</p>
-                                                <p class="paragraph-font text-size-18">Saya kurang suka mie sedap varian baru yg rasa mie ayam karena rasanya kurang nendang.Namun untuk tekstur sudah ok. Mungkin memang kurang cocok dilidah saya tapi mungkin yang lain bisa nyobain..</p>
-                                            </div>
-                                            <div class="col-2 text-right pr-0">
-                                                <p class="body-font text-size-14 mt-5">19 Apr 19</p>
-                                                <a href="#" class='txt-black'><i class="far fa-trash-alt fa-2x mt-3"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="reviewlist row mr-0 pb-3">
-                                            <div class="col-2 pl-0">
-                                                <div class="reviewimg-wrap" style="background-image: url('<?php echo base_url().'assets/img/products/icecreamthaitea.jpg'?>')"></div>
-                                            </div>
-                                            <div class="col-8">
-                                                <p class="text-18 mt-5">Wall's Ice Cream Sandwich rasa Thai tea & Milk</p>
-                                                <p class="paragraph-font text-size-18">Suka bgt sama ice cream ini, esnya lembut, rasanya enak ngga bikin eneg, manisnya pas, apalagi rasa thai teanya emm nyummii, wajib coba ni para pecinta ice cream. Paling enak sih makan pas lagi panas terik hehe.</p>
-                                            </div>
-                                            <div class="col-2 text-right pr-0">
-                                                <p class="body-font text-size-14 mt-5">19 Apr 19</p>
-                                                <a href="#" class='txt-black'><i class="far fa-trash-alt fa-2x mt-3"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="reviewlist row mr-0 pb-3">
-                                            <div class="col-2 pl-0">
-                                                <div class="reviewimg-wrap" style="background-image: url('assets/img/products/spicychickenstrip.jpg')"></div>
-                                            </div>
-                                            <div class="col-8">
-                                                <p class="text-18 mt-5">So Good Spicy Chicken Strip</p>
-                                                <p class="paragraph-font text-size-18">Menurut saya pribadi sih, spicy chicken strip dari so good ini sangat di rekomendasikan bagi penyuka chicken strip. apalagi disertai dengan bumbu pedas, dan ga ketinggalan juga tepung crispy yang gurih. pokoknya simpel banget masaknya, gurih, dan ga nyesel kalau kalian nyoba beli ini..</p>
-                                            </div>
-                                            <div class="col-2 text-right pr-0">
-                                                <p class="body-font text-size-14 mt-5">19 Apr 19</p>
-                                                <a href="#" class='txt-black'><i class="far fa-trash-alt fa-2x mt-3"></i></a>
-                                            </div>
-                                        </div>
+                                        <?php } ?>
                                         <div class='col-12 text-center mt-4'>
                                             <button class='btnApply btn-white' type='submit'>Lanjut</button>
                                         </div>
@@ -193,13 +172,13 @@
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
                                                         <select name="anak">
-                                                            <option <?php if ($jum_orang == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
-                                                            <option <?php if ($jum_orang == 'A' ) echo 'selected' ; ?> value="A">Anda Sendiri</option>
-                                                            <option <?php if ($jum_orang == 'B' ) echo 'selected' ; ?> value="B">2 Orang</option>
-                                                            <option <?php if ($jum_orang == 'C' ) echo 'selected' ; ?> value="C">3 Orang</option>
-                                                            <option <?php if ($jum_orang == 'D' ) echo 'selected' ; ?> value="D">4 Orang</option>
-                                                            <option <?php if ($jum_orang == 'E' ) echo 'selected' ; ?> value="E">5 Orang</option>
-                                                            <option <?php if ($jum_orang == 'F' ) echo 'selected' ; ?> value="F">6 Atau Lebih</option>
+                                                            <option <?php if ($u->jum_orang == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
+                                                            <option <?php if ($u->jum_orang == 'A' ) echo 'selected' ; ?> value="A">Anda Sendiri</option>
+                                                            <option <?php if ($u->jum_orang == 'B' ) echo 'selected' ; ?> value="B">2 Orang</option>
+                                                            <option <?php if ($u->jum_orang == 'C' ) echo 'selected' ; ?> value="C">3 Orang</option>
+                                                            <option <?php if ($u->jum_orang == 'D' ) echo 'selected' ; ?> value="D">4 Orang</option>
+                                                            <option <?php if ($u->jum_orang == 'E' ) echo 'selected' ; ?> value="E">5 Orang</option>
+                                                            <option <?php if ($u->jum_orang == 'F' ) echo 'selected' ; ?> value="F">6 Atau Lebih</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -214,15 +193,15 @@
                                                         </span>
                                                     </div>
                                                     <div class="input-wrapper col-12 pl-0 pr-0 mt-5">
-                                                        <input type="checkbox" id="child1" name="child" <?php if ($anak == 'p' ) echo 'checked' ; ?> value="p">
+                                                        <input type="checkbox" id="child1" name="child" <?php if ($u->anak == 'p' ) echo 'checked' ; ?> value="p">
                                                         <label for="child1">Perempuan</label>
                                                     </div>
                                                     <div class="input-wrapper col-12 pl-0 pr-0 mt-5">
-                                                        <input type="checkbox" id="child2" name="child" <?php if ($anak == 'l' ) echo 'checked' ; ?> value="l">
+                                                        <input type="checkbox" id="child2" name="child" <?php if ($u->anak == 'l' ) echo 'checked' ; ?> value="l">
                                                         <label for="child2">Laki-laki</label>
                                                     </div>
                                                     <div class="input-wrapper col-12 pl-0 pr-0 mt-5">
-                                                        <input type="checkbox" id="child0" name="child" <?php if ($anak == 'n' ) echo 'checked' ; ?> value="n">
+                                                        <input type="checkbox" id="child0" name="child" <?php if ($u->anak == 'n' ) echo 'checked' ; ?> value="n">
                                                         <label for="child0">Tidak/Belum memiliki anak</label>
                                                     </div>
                                                 </div>
@@ -238,19 +217,19 @@
                                                     </div>
                                                     <div class="row ml-0 mr-0 mt-4">
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date1" name="child-date" <?php if ($tahun_anak == '2019' ) echo 'checked' ; ?> value="2019">
+                                                            <input type="checkbox" id="child-date1" name="child-date" <?php if ($u->tahun_anak == '2019' ) echo 'checked' ; ?> value="2019">
                                                             <label for="child-date1">2019</label>
                                                         </div>
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date2" name="child-date" <?php if ($tahun_anak == '2018' ) echo 'checked' ; ?> value="2018">
+                                                            <input type="checkbox" id="child-date2" name="child-date" <?php if ($u->tahun_anak == '2018' ) echo 'checked' ; ?> value="2018">
                                                             <label for="child-date2">2018</label>
                                                         </div>
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date3" name="child-date" <?php if ($tahun_anak == '2017' ) echo 'checked' ; ?> value="2017">
+                                                            <input type="checkbox" id="child-date3" name="child-date" <?php if ($u->tahun_anak == '2017' ) echo 'checked' ; ?> value="2017">
                                                             <label for="child-date3">2017</label>
                                                         </div>
                                                         <div class="input-wrapper col-6 pl-0 pr-0 mt-3">
-                                                            <input type="checkbox" id="child-date4" name="child-date" <?php if ($tahun_anak == '2016' ) echo 'checked' ; ?> value="2016">
+                                                            <input type="checkbox" id="child-date4" name="child-date" <?php if ($u->tahun_anak == '2016' ) echo 'checked' ; ?> value="2016">
                                                             <label for="child-date4">2016</label>
                                                         </div>
                                                     </div>
@@ -266,14 +245,14 @@
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
                                                         <select name="gaji">
-                                                            <option <?php if ($gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
-                                                            <option <?php if ($gaji == 'A' ) echo 'selected' ; ?> value="A">Dibawah Rp. 3.000.000</option>
-                                                            <option <?php if ($gaji == 'B' ) echo 'selected' ; ?> value="B">Rp. 3.000.000 - Rp 10.000.000</option>
-                                                            <option <?php if ($gaji == 'C' ) echo 'selected' ; ?> value="C">Rp. 10.000.000 - Rp. 15.000.000</option>
-                                                            <option <?php if ($gaji == 'D' ) echo 'selected' ; ?> value="D">Rp. 15.000.000 - Rp. 25.000.000</option>
-                                                            <option <?php if ($gaji == 'E' ) echo 'selected' ; ?> value="E">Rp. 25.000.000 - Rp. 35.000.000</option>
-                                                            <option <?php if ($gaji == 'F' ) echo 'selected' ; ?> value="F">Diatas  Rp. 35.000.000</option>
-                                                            <option <?php if ($gaji == 'G' ) echo 'selected' ; ?> value="G">Menolak</option>
+                                                            <option <?php if ($u->gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
+                                                            <option <?php if ($u->gaji == 'A' ) echo 'selected' ; ?> value="A">Dibawah Rp. 3.000.000</option>
+                                                            <option <?php if ($u->gaji == 'B' ) echo 'selected' ; ?> value="B">Rp. 3.000.000 - Rp 10.000.000</option>
+                                                            <option <?php if ($u->gaji == 'C' ) echo 'selected' ; ?> value="C">Rp. 10.000.000 - Rp. 15.000.000</option>
+                                                            <option <?php if ($u->gaji == 'D' ) echo 'selected' ; ?> value="D">Rp. 15.000.000 - Rp. 25.000.000</option>
+                                                            <option <?php if ($u->gaji == 'E' ) echo 'selected' ; ?> value="E">Rp. 25.000.000 - Rp. 35.000.000</option>
+                                                            <option <?php if ($u->gaji == 'F' ) echo 'selected' ; ?> value="F">Diatas  Rp. 35.000.000</option>
+                                                            <option <?php if ($u->gaji == 'G' ) echo 'selected' ; ?> value="G">Menolak</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -288,11 +267,11 @@
                                                     </div>
                                                     <div class="select-wrapper overflow-hidden col-6 p-0">
                                                         <select name="outcome">
-                                                            <option <?php if ($gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
-                                                            <option <?php if ($gaji == 'A' ) echo 'selected' ; ?> value="A">0-25%</option>
-                                                            <option <?php if ($gaji == 'B' ) echo 'selected' ; ?> value="B">25%-49%</option>
-                                                            <option <?php if ($gaji == 'C' ) echo 'selected' ; ?> value="C">50%-74%</option>
-                                                            <option <?php if ($gaji == 'D' ) echo 'selected' ; ?> value="D">Lebih dari 75%</option>
+                                                            <option <?php if ($u->gaji == '' ) echo 'selected' ; ?> value="">Sebutkan</option>
+                                                            <option <?php if ($u->gaji == 'A' ) echo 'selected' ; ?> value="A">0-25%</option>
+                                                            <option <?php if ($u->gaji == 'B' ) echo 'selected' ; ?> value="B">25%-49%</option>
+                                                            <option <?php if ($u->gaji == 'C' ) echo 'selected' ; ?> value="C">50%-74%</option>
+                                                            <option <?php if ($u->gaji == 'D' ) echo 'selected' ; ?> value="D">Lebih dari 75%</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -311,7 +290,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="firstname" name="firstname" required value="<?=  $firstname;?>">
+                                                        <input type="text" id="firstname" name="firstname" required value="<?=  $u->firstname;?>">
                                                         <label for="firstname">Nama depan</label>
                                                     </div>
                                                     <div class="input-error">
@@ -324,7 +303,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="lastname" name="lastname" required value="<?=  $lastname;?>">
+                                                        <input type="text" id="lastname" name="lastname" required value="<?=  $u->lastname;?>">
                                                         <label for="lastname">Nama Keluarga</label>
                                                     </div>
                                                     <div class="input-error">
@@ -337,7 +316,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="jk" name="jk" readonly value="<?=  $jk;?>">
+                                                        <input type="text" id="jk" name="jk" readonly value="<?=  $u->jk;?>">
                                                         <label for="jk" >Jenis Kelamin</label>
                                                     </div>
                                                     <div class="input-error">
@@ -351,7 +330,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="bulan" name="bulan" required readonly value="<?=  $bulan,', ', $tahun;?>">
+                                                        <input type="text" id="bulan" name="bulan" required readonly value="<?=  $u->bulan,', ', $u->tahun;?>">
                                                         <label for="lastname">Bulan & tahun lahir</label>
                                                     </div>
                                                     <div class="input-error">
@@ -364,7 +343,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="email" name="email" required value="<?=  $email;?>">
+                                                        <input type="text" id="email" name="email" required value="<?=  $u->email;?>">
                                                         <label for="lastname">Alamat email</label>
                                                     </div>
                                                     <div class="input-error">
@@ -378,7 +357,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="numphone" name="numphone" required value="<?=  $hp;?>">
+                                                        <input type="text" id="numphone" name="numphone" required value="<?=  $u->hp;?>">
                                                         <label for="lastname">Telepon *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -392,7 +371,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <textarea id="address" name="address" required><?=  $alamat;?></textarea>
+                                                        <textarea id="address" name="address" required><?=  $u->alamat;?></textarea>
                                                         <label for="lastname">Alamat *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -405,7 +384,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address2" name="address2" required value="<?=  $alamat_dua;?>">
+                                                        <input type="text" id="address2" name="address2" required value="<?=  $u->alamat_dua;?>">
                                                         <label for="lastname">Alamat baris ke-2 *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -418,7 +397,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address3" name="address3" required value="<?=  $kel;?>">
+                                                        <input type="text" id="address3" name="address3" required value="<?=  $u->kel;?>">
                                                         <label for="lastname">Kelurahan *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -431,7 +410,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address4" name="address4" required value="<?=  $kec;?>">
+                                                        <input type="text" id="address4" name="address4" required value="<?=  $u->kec;?>">
                                                         <label for="lastname">Kecamatan *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -444,7 +423,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address5" name="address5" required value="<?=  $kab;?>">
+                                                        <input type="text" id="address5" name="address5" required value="<?=  $u->kab;?>">
                                                         <label for="lastname">Kabupaten *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -458,41 +437,41 @@
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="select-wrapper overflow-hidden col-12 p-0">
                                                         <select name="prov">
-                                                            <option <?php if ($prov == '' ) echo 'selected' ; ?> value="">Provinsi *</option>
-                                                            <option <?php if ($prov == 'AC' ) echo 'selected' ; ?> value="AC">Aceh</option>
-                                                            <option <?php if ($prov == 'BA' ) echo 'selected' ; ?> value="BA">Bali</option>
-                                                            <option <?php if ($prov == 'BT' ) echo 'selected' ; ?> value="BT">Banten</option>
-                                                            <option <?php if ($prov == 'BE' ) echo 'selected' ; ?> value="BE">Bengkulu</option>
-                                                            <option <?php if ($prov == 'JK' ) echo 'selected' ; ?> value="JK">DKI Jakarta</option>
-                                                            <option <?php if ($prov == 'GO' ) echo 'selected' ; ?> value="GO">Gorontalo</option>
-                                                            <option <?php if ($prov == 'JA' ) echo 'selected' ; ?> value="JA">Jambi</option>
-                                                            <option <?php if ($prov == 'JB' ) echo 'selected' ; ?> value="JB">Jawa Barat</option>
-                                                            <option <?php if ($prov == 'JT' ) echo 'selected' ; ?> value="JT">Jawa Tengah</option>
-                                                            <option <?php if ($prov == 'JI' ) echo 'selected' ; ?> value="JI">Jawa Timur</option>
-                                                            <option <?php if ($prov == 'KB' ) echo 'selected' ; ?> value="KB">Kalimantan Barat</option>
-                                                            <option <?php if ($prov == 'KS' ) echo 'selected' ; ?> value="KS">Kalimantan Selatan</option>
-                                                            <option <?php if ($prov == 'KT' ) echo 'selected' ; ?> value="KT">Kalimantan Tengah</option>
-                                                            <option <?php if ($prov == 'KI' ) echo 'selected' ; ?> value="KI">Kalimantan Timur</option>
-                                                            <option <?php if ($prov == 'KU' ) echo 'selected' ; ?> value="KU">Kalimantan Utara</option>
-                                                            <option <?php if ($prov == 'BB' ) echo 'selected' ; ?> value="BB">Kepulauan Bangka Belitung</option>
-                                                            <option <?php if ($prov == 'KR' ) echo 'selected' ; ?> value="KR">Kepulauan Riau</option>
-                                                            <option <?php if ($prov == 'LA' ) echo 'selected' ; ?> value="LA">Lampung</option>
-                                                            <option <?php if ($prov == 'MA' ) echo 'selected' ; ?> value="MA">Maluku</option>
-                                                            <option <?php if ($prov == 'MU' ) echo 'selected' ; ?> value="MU">Maluku Utara</option>
-                                                            <option <?php if ($prov == 'NB' ) echo 'selected' ; ?> value="NB">Nusa Tenggara Barat</option>
-                                                            <option <?php if ($prov == 'NT' ) echo 'selected' ; ?> value="NT">Nusa Tenggara Timur</option>
-                                                            <option <?php if ($prov == 'PA' ) echo 'selected' ; ?> value="PA">Papua</option>
-                                                            <option <?php if ($prov == 'PB' ) echo 'selected' ; ?> value="PB">Papua Barat</option>
-                                                            <option <?php if ($prov == 'RI' ) echo 'selected' ; ?> value="RI">Riau</option>
-                                                            <option <?php if ($prov == 'SR' ) echo 'selected' ; ?> value="SR">Sulawesi Barat</option>
-                                                            <option <?php if ($prov == 'SN' ) echo 'selected' ; ?> value="SN">Sulawesi Selatan</option>
-                                                            <option <?php if ($prov == 'ST' ) echo 'selected' ; ?> value="ST">Sulawesi Tengah</option>
-                                                            <option <?php if ($prov == 'SG' ) echo 'selected' ; ?> value="SG">Sulawesi Tenggara</option>
-                                                            <option <?php if ($prov == 'SA' ) echo 'selected' ; ?> value="SA">Sulawesi Utara</option>
-                                                            <option <?php if ($prov == 'SB' ) echo 'selected' ; ?> value="SB">Sumatera Barat</option>
-                                                            <option <?php if ($prov == 'SS' ) echo 'selected' ; ?> value="SS">Sumatera Selatan</option>
-                                                            <option <?php if ($prov == 'SU' ) echo 'selected' ; ?> value="SU">Sumatera Utara</option>
-                                                            <option <?php if ($prov == 'YO' ) echo 'selected' ; ?> value="YO">Yogyakarta</option>
+                                                            <option <?php if ($u->prov == '' ) echo 'selected' ; ?> value="">Provinsi *</option>
+                                                            <option <?php if ($u->prov == 'AC' ) echo 'selected' ; ?> value="AC">Aceh</option>
+                                                            <option <?php if ($u->prov == 'BA' ) echo 'selected' ; ?> value="BA">Bali</option>
+                                                            <option <?php if ($u->prov == 'BT' ) echo 'selected' ; ?> value="BT">Banten</option>
+                                                            <option <?php if ($u->prov == 'BE' ) echo 'selected' ; ?> value="BE">Bengkulu</option>
+                                                            <option <?php if ($u->prov == 'JK' ) echo 'selected' ; ?> value="JK">DKI Jakarta</option>
+                                                            <option <?php if ($u->prov == 'GO' ) echo 'selected' ; ?> value="GO">Gorontalo</option>
+                                                            <option <?php if ($u->prov == 'JA' ) echo 'selected' ; ?> value="JA">Jambi</option>
+                                                            <option <?php if ($u->prov == 'JB' ) echo 'selected' ; ?> value="JB">Jawa Barat</option>
+                                                            <option <?php if ($u->prov == 'JT' ) echo 'selected' ; ?> value="JT">Jawa Tengah</option>
+                                                            <option <?php if ($u->prov == 'JI' ) echo 'selected' ; ?> value="JI">Jawa Timur</option>
+                                                            <option <?php if ($u->prov == 'KB' ) echo 'selected' ; ?> value="KB">Kalimantan Barat</option>
+                                                            <option <?php if ($u->prov == 'KS' ) echo 'selected' ; ?> value="KS">Kalimantan Selatan</option>
+                                                            <option <?php if ($u->prov == 'KT' ) echo 'selected' ; ?> value="KT">Kalimantan Tengah</option>
+                                                            <option <?php if ($u->prov == 'KI' ) echo 'selected' ; ?> value="KI">Kalimantan Timur</option>
+                                                            <option <?php if ($u->prov == 'KU' ) echo 'selected' ; ?> value="KU">Kalimantan Utara</option>
+                                                            <option <?php if ($u->prov == 'BB' ) echo 'selected' ; ?> value="BB">Kepulauan Bangka Belitung</option>
+                                                            <option <?php if ($u->prov == 'KR' ) echo 'selected' ; ?> value="KR">Kepulauan Riau</option>
+                                                            <option <?php if ($u->prov == 'LA' ) echo 'selected' ; ?> value="LA">Lampung</option>
+                                                            <option <?php if ($u->prov == 'MA' ) echo 'selected' ; ?> value="MA">Maluku</option>
+                                                            <option <?php if ($u->prov == 'MU' ) echo 'selected' ; ?> value="MU">Maluku Utara</option>
+                                                            <option <?php if ($u->prov == 'NB' ) echo 'selected' ; ?> value="NB">Nusa Tenggara Barat</option>
+                                                            <option <?php if ($u->prov == 'NT' ) echo 'selected' ; ?> value="NT">Nusa Tenggara Timur</option>
+                                                            <option <?php if ($u->prov == 'PA' ) echo 'selected' ; ?> value="PA">Papua</option>
+                                                            <option <?php if ($u->prov == 'PB' ) echo 'selected' ; ?> value="PB">Papua Barat</option>
+                                                            <option <?php if ($u->prov == 'RI' ) echo 'selected' ; ?> value="RI">Riau</option>
+                                                            <option <?php if ($u->prov == 'SR' ) echo 'selected' ; ?> value="SR">Sulawesi Barat</option>
+                                                            <option <?php if ($u->prov == 'SN' ) echo 'selected' ; ?> value="SN">Sulawesi Selatan</option>
+                                                            <option <?php if ($u->prov == 'ST' ) echo 'selected' ; ?> value="ST">Sulawesi Tengah</option>
+                                                            <option <?php if ($u->prov == 'SG' ) echo 'selected' ; ?> value="SG">Sulawesi Tenggara</option>
+                                                            <option <?php if ($u->prov == 'SA' ) echo 'selected' ; ?> value="SA">Sulawesi Utara</option>
+                                                            <option <?php if ($u->prov == 'SB' ) echo 'selected' ; ?> value="SB">Sumatera Barat</option>
+                                                            <option <?php if ($u->prov == 'SS' ) echo 'selected' ; ?> value="SS">Sumatera Selatan</option>
+                                                            <option <?php if ($u->prov == 'SU' ) echo 'selected' ; ?> value="SU">Sumatera Utara</option>
+                                                            <option <?php if ($u->prov == 'YO' ) echo 'selected' ; ?> value="YO">Yogyakarta</option>
                                                         </select>
                                                     </div>
                                                     <div class="input-error">
@@ -505,7 +484,7 @@
                                             <div class="row pt-3">
                                                 <div class="input-inner col-12 mb-2">
                                                     <div class="input-wrapper">
-                                                        <input type="text" id="address6" name="address6" required value="<?=  $kodepos;?>">
+                                                        <input type="text" id="address6" name="address6" required value="<?=  $u->kodepos;?>">
                                                         <label for="lastname">Kode pos *</label>
                                                     </div>
                                                     <div class="input-error">
@@ -576,7 +555,7 @@
                                             <div class="row pt-3">
                                                 <div class="col-8 input-outer">
                                                     <div class="input-wrapper">
-                                                        <input type="password" id="password" name="password" required value="<?= $password;?>">
+                                                        <input type="password" id="password" name="password" required value="<?= $u->password;?>">
                                                         <label for="password">Kata sandi</label>
                                                     </div>
                                                     <div class="input-error">
@@ -589,7 +568,7 @@
                                             <div class="row pt-3">
                                                 <div class="col-8 input-outer">
                                                     <div class="input-wrapper">
-                                                        <input type="password" id="repassword" name="repassword" required  value="<?= $password;?>">
+                                                        <input type="password" id="repassword" name="repassword" required  value="<?= $u->password;?>">
                                                         <label for="repassword">Konfirmasi kata sandi</label>
                                                     </div>
                                                     <div class="input-error">

@@ -149,7 +149,7 @@ class UserModel extends CI_Model {
         $this->db->set('tahun_beli', $data['thn']);
         $this->db->set('foto', $data['foto']);
         $this->db->set('video', $data['video']);
-        $this->db->set('rev-time', $data['waktu']);
+        $this->db->set('rev_time', $data['waktu']);
 
         $insert = $this->db->insert('review');
         if ($insert){
@@ -157,5 +157,40 @@ class UserModel extends CI_Model {
         }else{
             return FALSE;
         }
+    }
+
+    public function getReviewByProduct($prod)
+    {
+        $this->db->select('*')->from('review');
+        $this->db->join('member','id_member');
+        $this->db->where('id_produk', $prod);
+        $hasil = $this->db->get();
+        return $hasil->result();
+    }
+
+    public function getReviewById($user)
+    {
+        $this->db->select('*')->from('review');
+        $this->db->join('produk','id_produk');
+        $this->db->where('id_member', $user);
+        $hasil = $this->db->get();
+        return $hasil->result();
+    }
+
+    public function addPhoto($foto){
+        $this->db->where('email', $this->session->userdata('email'));
+        $this->db->set('photo', $foto);
+
+        $insert = $this->db->update('member');
+        if ($insert){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+    public function deleteRev($rev){
+        $this->db->where('id_review', $rev);
+        $this->db->delete('review');
     }
 }

@@ -14,6 +14,7 @@
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>"> 
     </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
@@ -142,132 +143,70 @@
                                 </h3>
                             </div>
                             <!-- REVIEW LOOP START -->
-                            <div class="row mb-4">
-                                <div class="col-12 rev-item">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <div class="ri-pp">
-                                                <a href="#">
-                                                    <div style="background-image:url('<?php echo base_url().'assets/img/profile/1.gif'?>')"></div>
-                                                </a>
-                                            </div>
-                                            <div class="ri-info">
-                                                <p class="mt-3 mb-2"><b>KANG JUNED</b> (BOGOR)</p>
-                                                <ul class="list-unstyled body-font text-size-14">
-                                                    <li>8 Review & Komentar</li>
-                                                    <li>2 Upload</li>
-                                                    <li>3 Vote Bermanfaat</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="row">
-                                                <div class="ri-userstar col-3 mb-3">
-                                                    <span class="rev-userstar-wrap">
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star"></span>
-                                                    </span>
+                            <?php foreach ($datar as $r ) {?>
+                                <div class="row mb-4">
+                                    <div class="col-12 rev-item">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div class="ri-pp">
+                                                    <a href="#">
+                                                        <div style="background-image:url('<?php echo base_url().'assets/img/profile/1.gif'?>')"></div>
+                                                    </a>
                                                 </div>
-                                                <div class="rev-userdate body-font text-size-14 col-2">
-                                                    23/04/2019
-                                                </div>
-                                                <div class="rev-usertitle head-font text-size-18 col-12 mb-2">
-                                                    Biskuit sehat
-                                                </div>
-                                                <div class="rev-usercomment body-font text-size-18 col-12 mb-4">
-                                                    Biskuit ini sangat cocok untuk mengganjal perut lapar. Biskuitnya terhitung tebal gurih asin. Rasa sayurannya cukup terasa. Untuk yang tidak suka biskuit manis, ini sangat cocok.
-                                                </div>
-                                                <div class="rev-usermedia col-6">
-                                                    <ul class="list-unstyled m-0 p-0">
-                                                        <li>
-                                                            <a href="#"><img src="<?php echo base_url().'assets/img/review/1.jpeg'?>"></a>
-                                                        </li>
+                                                <div class="ri-info">
+                                                    <p class="mt-3 mb-2"><b><?= $r->firstname;?></b> (<?= $r->kab;?>)</p>
+                                                    <ul class="list-unstyled body-font text-size-14">
+                                                        <li>8 Review & Komentar</li>
+                                                        <li>2 Upload</li>
+                                                        <li>3 Vote Bermanfaat</li>
                                                     </ul>
                                                 </div>
-                                                <div class="rev-userbtn text-right col-6">
-                                                    <div class="rev-userreport">
-                                                        <a href="#">
-                                                            <i class="far fa-flag"></i>
-                                                        </a>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="row">
+                                                    <div class="ri-userstar col-3 mb-3">
+                                                        <span class="rev-userstar-wrap">
+                                                            <span class="fas fa-star mr-2"></span>
+                                                            <span class="fas fa-star mr-2"></span>
+                                                            <span class="fas fa-star mr-2"></span>
+                                                            <span class="fas fa-star mr-2"></span>
+                                                            <span class="fas fa-star"></span>
+                                                        </span>
                                                     </div>
-                                                    <div class="rev-userlike mr-5">
-                                                        <a href="#">
-                                                            <i class="far fa-heart"></i>
-                                                        </a>
+                                                    <div class="rev-userdate body-font text-size-14 col-2">
+                                                        <?= $r->rev_time;?>
+                                                    </div>
+                                                    <div class="rev-usertitle head-font text-size-18 col-12 mb-2">
+                                                        <?= $r->judul;?>
+                                                    </div>
+                                                    <div class="rev-usercomment body-font text-size-18 col-12 mb-4">
+                                                        <?= $r->comment;?>
+                                                    </div>
+                                                    <div class="rev-usermedia col-6">
+                                                        <ul class="list-unstyled m-0 p-0">
+                                                            <li>
+                                                                <a href="#"><img src="<?php echo base_url().'assets/img/review/'?><?= $r->foto;?>"></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="rev-userbtn text-right col-6">
+                                                        <div class="rev-userreport">
+                                                            <a href="#">
+                                                                <i class="far fa-flag"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="rev-userlike mr-5">
+                                                            <a>
+                                                                <i id="likes" class="fas fa-heart"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- REVIEW LOOP END -->
-                            <!-- REVIEW LOOP START -->
-                            <div class="row mb-4">
-                                <div class="col-12 rev-item">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <div class="ri-pp">
-                                                <a href="#">
-                                                    <div>A</div>
-                                                </a>
-                                            </div>
-                                            <div class="ri-info">
-                                                <p class="mt-3 mb-2"><b>ALMAS BANI AGAM</b> (BATANG)</p>
-                                                <ul class="list-unstyled body-font text-size-14">
-                                                    <li>8 Review & Komentar</li>
-                                                    <li>2 Upload</li>
-                                                    <li>3 Vote Bermanfaat</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="row">
-                                                <div class="ri-userstar col-3 mb-3">
-                                                    <span class="rev-userstar-wrap">
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star mr-2"></span>
-                                                        <span class="fas fa-star"></span>
-                                                    </span>
-                                                </div>
-                                                <div class="rev-userdate body-font text-size-14 col-2">
-                                                    23/04/2019
-                                                </div>
-                                                <div class="rev-usertitle head-font text-size-18 col-12 mb-2">
-                                                    Biskuit sehat
-                                                </div>
-                                                <div class="rev-usercomment body-font text-size-18 col-12 mb-4">
-                                                    Biskuit ini sangat cocok untuk mengganjal perut lapar. Biskuitnya terhitung tebal gurih asin. Rasa sayurannya cukup terasa. Untuk yang tidak suka biskuit manis, ini sangat cocok.
-                                                </div>
-                                                <div class="rev-usermedia col-6">
-                                                    <ul class="list-unstyled m-0 p-0">
-                                                        <li>
-                                                            <a href="#"><img src="<?php echo base_url().'assets/img/review/1.jpeg'?>"></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="rev-userbtn text-right col-6">
-                                                    <div class="rev-userreport">
-                                                        <a href="#">
-                                                            <i class="far fa-flag"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="rev-userlike mr-5">
-                                                        <a href="#">
-                                                            <i class="far fa-heart"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
                             <!-- REVIEW LOOP END -->
                             <div class="row">
                                 <div class="col-12 rev-pager">
@@ -287,45 +226,32 @@
                         </div>
                     </div>
                     <div class="row m-0 mb-5">
-                        <div class="galeri-list col-12">
+                        <!-- <div class="galeri-list col-12">
                             <div class="row mb-5">
                                 <h3 class="col-12 head-font">
                                     Galeri Penguji
                                 </h3>
                             </div>
                             <div class="row mb-5">
-                                <!-- GALERY LOOP START -->
-                                <div class="galeri-item col-4">
-                                    <a href="#">
-                                        <div class="galeri-img" style="background-image:url('<?php echo base_url().'assets/img/review/1.jpeg'?>')"></div>
-                                        <div class="galeri-user body-font text-center text-size-18 txt-black mt-3">
-                                            <p class="">Kang Juned</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="galeri-item col-4">
-                                    <a href="#">
-                                        <div class="galeri-img" style="background-image:url('<?php echo base_url().'assets/img/review/2.jpeg'?>')"></div>
-                                        <div class="galeri-user body-font text-center text-size-18 txt-black mt-3">
-                                            <p class="">Kang Juned</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="galeri-item col-4">
-                                    <a href="#">
-                                        <div class="galeri-img" style="background-image:url('<?php echo base_url().'assets/img/review/3.jpeg'?>')"></div>
-                                        <div class="galeri-user body-font text-center text-size-18 txt-black mt-3">
-                                            <p class="">Kang Juned</p>
-                                        </div>
-                                    </a>
-                                </div>
+                                
+                                <?php foreach ($datar as $d ) {?>
+                                    <div class="galeri-item col-4">
+                                        <a href="#">
+                                            <div class="galeri-img" style="background-image:url('<?php echo base_url().'assets/img/review/1.jpeg'?><?= $d->foto?>')"></div>
+                                            <div class="galeri-user body-font text-center text-size-18 txt-black mt-3">
+                                                <p class=""><?= $datau->firstname?></p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <?php } ?>
+                                
                             </div>
                             <div class="row">
                                 <div class="text-center col-12">
                                     <a href="#" class="btn-white">Lihat selanjutnya</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row mb-5">
                         <div class="col-12 ask-list">
@@ -415,7 +341,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                         <script>
                             $(document).ready(function(){
                                 $(".haveTried").hide();
@@ -452,7 +377,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form action="<?php echo site_url().'/UserController/AddReviewY/';?><?= $datai->id_produk?>" method="POST">
+                        <form action="<?php echo site_url().'/UserController/AddReviewY/';?><?= $datai->id_produk?>" method="POST" enctype="multipart/form-data">
                             <div class="haveTried">
                                 <div class="row">
                                     <div class="rev-iptscore col-12">
@@ -530,13 +455,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="rev-iptreco col-12">
+                                    <!-- <div class="rev-iptreco col-12">
                                         <p>Apakah kamu merekomendasikan produk ini kepada teman?</p>
                                         <div class="col-12 p-0">
                                             <button class="btn-white">Ya</button>
                                             <button class="btn-white">Tidak</button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn-white m-auto">Kirimkan</button>
