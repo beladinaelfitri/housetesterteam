@@ -12,8 +12,11 @@
         <link rel="icon shortcut" href="<?php echo base_url().'assets/img/favicon.ico'?>" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/slick.css'?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/slick-theme.css'?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>"> 
     </head>
-    <body class='body-secondary'>
+    <body class='body-sc'>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -37,59 +40,63 @@
         </header>
         <section>
             <div class="container-fluid">
-                <div class="section-container signin-section">
-                    <div class="col-12 section-hd">
-                        <h1 class='text-white'>Selamat datang kembali</h1>
+                <div class="container-inner col-12 pt-3 mt-5">
+                    <div class="welcomeHead row m-0 mb-4">
+                        <div class="col-12">
+                            <h1 class="text-center txt-white">Selamat datang kembali</h1>
+                        </div>
                     </div>
-                    <div class="col-12 section-fm text-center">
-                        <div class="col-6 btn-join-wrapper">
-                            <div class="col-12">
-                                <button id="joinFacebook" class="btn-white"><i class="fab fa-facebook-square"></i>Masuk via Facebook</button>
+                    <div class="row m-0 mb-4">
+                        <div class="col-12 text-center">
+                            <div class="col-6 m-auto">
+                                <button class="btn-white mb-4"><i class="fab fa-facebook-square text-size-20 pr-2"></i>Masuk via Facebook</button>
                             </div>
-                            <div class="col-12">
-                                <button id="joinEmail" class="btn-white" onclick="login()">Masuk via Email</button>
+                            <div class="col-6 m-auto">
+                                <button class="btn-white" id="btnEmailLogin">Masuk via Email</button>
                             </div>
                         </div>
-                        <div class="col-8 form-join-wrapper">
-                            <form action="<?php echo site_url().'/UserController/Login';?>" method="POST">
-                                <div class="row" id="formlogin">
-                                    <div class="col-12">
+                    </div>
+                    <div class="row m-0">
+                        <div class="input-login col-8 m-auto d-none">
+                            <form action="<?php echo site_url().'/UserController/Login';?>" method="POST" id="frmLogin">
+                                <div class="row pb-3">
+                                    <div class="input-outer col-12 mb-2">
                                         <div class="input-wrapper">
-                                            <input type="text" id="email" name="email">
+                                            <input type="text" id="email" name="email" required>
                                             <label for="email">Alamat email</label>
                                         </div>
                                         <div class="input-error">
-                                            <span><!-- Error --><?= form_error('email') ?></span>
+                                            <span>
+                                                <?= form_error('email') ?>
+                                            </span>
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-12 margin-t10">
+                                </div>
+                               <div class="row pb-4">
+                                    <div class="input-outer col-12 mb-2">
                                         <div class="input-wrapper">
-                                            <input type="password" id="password" name="password">
+                                            <input type="password" id="password" name="password" required>
                                             <label for="password">Kata sandi</label>
                                         </div>
                                         <div class="input-error">
-                                            <span><!-- Error --><?= form_error('password') ?></span>
+                                            <span>
+                                                <?= form_error('password') ?>
+                                            </span>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class='remember-wrapper'>
-                                            <input type="checkbox" name="remember" style="height: 30px; width: 30px;">
-                                            <label for="password">
-                                                <span>Ingat saya</span>
-                                            </label>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <button class="btnApply btn-white" type="submit">Masuk Via Email</button>
-                                        <div class='btnJoin'><a href="<?php echo site_url().'/UserController/Register';?>" class='href-link'>Pengguna Baru? Daftar Sekarang</a></div>
-                                        <div class='btnMember'><a href="#" class='href-link'>Lupa Kata Sandi?</a></div>
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="input-login input-outer col-12 text-center mb-4 d-none">
+                            <button class="btn-white" type="submit" form="frmLogin">Masuk Via Email</button>
+                        </div>
+                        <div class="input-outer col-12 text-center text-uppercase">
+                            <a href="<?php echo site_url().'/UserController/Register';?>" class='href-link'>Pengguna Baru? Daftar Sekarang</a>
+                        </div>
+                        <div class="input-outer col-12 text-center text-uppercase">
+                            <a href="<?php echo site_url('UserController/ForgotPassword')?>" class='href-link'>Lupa Kata Sandi?</a>
                         </div>
                     </div>
                 </div>
@@ -120,5 +127,7 @@
         </footer>
         <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.min.js'?>"></script>
         <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script> 
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/slick.min.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/app.js'?>"></script>
     </body>
 </html>

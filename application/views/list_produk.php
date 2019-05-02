@@ -31,7 +31,7 @@
                         <li>
                             <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $datau->firstname ?></span>
                                 <div class="head-profile">
-                                    <img src="<?php echo base_url().'assets/img/profile/1.gif'?>">
+                                    <img src="<?php echo base_url().'assets/img/profile/'?><?= $datau->photo?>">
                                 </div>
                             </a>
                         </li>

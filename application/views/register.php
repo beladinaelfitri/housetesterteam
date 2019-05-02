@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js <?php if(isset($header)){echo $header;}echo" ";if(isset($nav)){echo $nav;}echo" ";if(isset($footer)){echo $footer;}echo" ";if(isset($marketingfooter)){echo $marketingfooter;}?>"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,9 @@
         <link rel="icon shortcut" href="<?php echo base_url().'assets/img/favicon.ico'?>" type="image/x-icon">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
         <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/slick.css'?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/css/slick-theme.css'?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/all.css'?>"> 
     </head>
     <body class='body-secondary'>
         <!--[if lt IE 7]>
@@ -50,11 +53,11 @@
                                 <button id="joinFacebook" class="btn-white">Gabung via Facebook</button>
                             </div>
                             <div class="col-12">
-                                <button id="joinEmail" class="btn-white">Gabung via Email</button>
+                                <button id="btnEmailRegis" class="btn-white">Gabung via Email</button>
                             </div>
                         </div>
                         <div class="col-8 form-join-wrapper">
-                            <form action="<?php echo site_url().'/UserController/Register';?>" method="POST">
+                            <form action="<?php echo site_url().'/UserController/Register';?>" method="POST" id="frmJoin" class="d-none">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="input-wrapper">
@@ -113,7 +116,9 @@
                 </div>
             </div>
         </footer>
-		<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js')?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/app.js')?>"></script>
+		<script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.min.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script> 
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/slick.min.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url().'assets/js/app.js'?>"></script>
     </body>
 </html>

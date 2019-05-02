@@ -10,7 +10,7 @@ class UserController extends CI_Controller {
     }
 
     public function index(){
-        $this->load->view('register');
+        $this->load->view('index');
     }
 
 	public function Register(){
@@ -36,7 +36,7 @@ class UserController extends CI_Controller {
                 redirect('UserController/RegisterProfile');
             }        
         }else{
-            $this->load->view('register');
+            $this->load->view('join');
         }
     }
 
@@ -248,7 +248,6 @@ class UserController extends CI_Controller {
     public function Login(){
         $this->form_validation->set_rules('email','Email','required');
         $this->form_validation->set_rules('password','Password','required');
-        $this->form_validation->set_rules('remember','remember me','required');
 
         $data_member = array (
             'password' => $this->input->post('password'),
@@ -276,11 +275,11 @@ class UserController extends CI_Controller {
 
     public function Logout(){
         $this->session->sess_destroy();
-        $this->load->view('login');
+        $this->load->view('index');
     }
 
     public function Homepage(){
-        $this->load->view('homepage');
+        $this->load->view('indexlogged');
         
     }
 

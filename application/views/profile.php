@@ -31,7 +31,7 @@
                         <li>
                             <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $u->firstname ?></span>
                                 <div class="head-profile">
-                                    <img src="<?php echo base_url().'assets/img/profile/1.gif'?>">
+                                    <img src="<?php echo base_url().'assets/img/profile/'?><?= $u->photo?>">
                                 </div>
                             </a>
                         </li>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="col-6">
                                     <ul class="pp-info paragraph-font list-unstyled pl-0 mb-0">
-                                        <li><?=  $u->firstname;?></li>
+                                        <li><?=  $u->firstname, ' ', $u->lastname;?></li>
                                         <li><?=  $u->jk;?></li>
                                         <li><?=  $u->bulan,', ', $u->tahun;?></li>
                                         <li><?=  $u->hp;?></li>
@@ -101,12 +101,12 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="col-12">
-                                    <button class="btn-white w-100" type="button" data-toggle="tab" data-target="#profile">Profil lengkap</button>
+                                    <button class="btn-white w-100" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true" type="button">Profil lengkap</button>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="col-12">
-                                    <button class="btn-white w-100" type="button">Info Lebih Lanjut</button>
+                                    <button class="btn-white w-100" type="button" data-toggle="tab" href="#about" role="tab" aria-controls="about">Info Lebih Lanjut</button>
                             </div>
                         </div>
                         <div class="col-3">

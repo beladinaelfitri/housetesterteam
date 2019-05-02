@@ -22,7 +22,7 @@
         <header id="header-wrapper" style="background: #06A9B5">
             <div class="header-items container-fluid" style="background: #06A9B5">
                 <div class="header-logo">
-                    <a href="#"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
+                    <a href="<?php echo site_url().'UserController/index'?>"><img src="<?php echo base_url().'assets/img/htc_logo2.png'?>" alt="Header Logo"></a>
                 </div>
                 <nav id="navbar-wrapper">
                     <ul>
@@ -32,7 +32,7 @@
                         <li>
                             <a href="<?php echo site_url().'/UserController/Profile';?>" class="username"><span>Hai, <?= $datau->firstname;?> </span>
                                 <div class="head-profile">
-                                    <img src="<?php echo base_url().'assets/img/profile/1.gif'?>">
+                                    <img src="<?php echo base_url().'assets/img/profile/'?><?= $datau->photo?>">
                                 </div>
                             </a>
                         </li>
@@ -99,9 +99,9 @@
                     <div class="row mb-4">
                         <div class="col-12 rev-tabs">
                             <ul class="list-unstyled body-font p-0 mb-0">
-                                <li><a>Review & Komentar</a></li>
-                                <li><a>Galeri Penguji</a></li>
-                                <li><a>Tanya Jawab</a></li>
+                                <li><a href="#rev-list">Review & Komentar</a></li>
+                                <li class="d-none"><a>Galeri Penguji</a></li>
+                                <li><a href="#ask-list">Tanya Jawab</a></li>
                             </ul>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col-12 rev-list">
+                        <div class="col-12 rev-list" id="rev-list">
                             <div class="row mb-5">
                                 <h3 class="col-12 head-font">
                                     Review & Komentar
@@ -150,7 +150,7 @@
                                             <div class="col-2">
                                                 <div class="ri-pp">
                                                     <a href="#">
-                                                        <div style="background-image:url('<?php echo base_url().'assets/img/profile/1.gif'?>')"></div>
+                                                        <div style="background-image:url('<?php echo base_url().'assets/img/profile/'?><?= $r->photo?>')"></div>
                                                     </a>
                                                 </div>
                                                 <div class="ri-info">
@@ -254,7 +254,7 @@
                         </div> -->
                     </div>
                     <div class="row mb-5">
-                        <div class="col-12 ask-list">
+                        <div class="col-12 ask-list" id="ask-list">
                             <div class="row mb-5">
                                 <h3 class="col-12 head-font">
                                     Tanya Jawab
@@ -341,7 +341,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <script>
+                        <script type="text/javascript">
                             $(document).ready(function(){
                                 $(".haveTried").hide();
                                 $(".haveNotTried").hide();
